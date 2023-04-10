@@ -29,7 +29,7 @@ def lexico(t,erro):
 
     tokens =[
        
-        'indentificador',
+        'identificador',
         'numero',
 
 
@@ -103,7 +103,7 @@ def lexico(t,erro):
     def t_identificador(self,t):
         r'[a-zA-Z_][a-zA-Z_0-9]*'
         # verificando se sera, palavra reservada . caso seja maiuscula sera palavra reservada
-        t.type = self.reversed.get(t.value.lower(),'indentificador')
+        t.type = self.reversed.get(t.value.lower(),'identificador')
         return lexico(t,f"nenhum")
 
 
