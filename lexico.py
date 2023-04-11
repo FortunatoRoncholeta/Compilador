@@ -1,72 +1,93 @@
 import ply.lex as lex  # inportaçao da biblioteca 
 
-saidas = []
+
+
+
 def lexico(t,erro):
     saidas.append((t.lineno,t.lexpos,t.type,t.value,erro))
 
+
         # palavras reservadas
 
-    reversed = {
-        'IFSULDEMINAS' : 'IFSULDEMINAS',
+
+    resersed = {
+        'IFSULDEMINAS' : 'IFSULDEMINAS', 
         'INICIO' : 'INICIO',
         'COMPILADORES' : 'COMPILADORES',
         'FIM' : 'FIM',
-        'SE' : 'SE',
-        'SENAO' : 'SENAO',
-        'SENAO_SE' : 'SENAO_SE',
-        'ENQUANTO' : 'ENQUANTO',
-        'TENTAR_EXECUTAR' : 'TENTAR_EXECUTAR',
-        'PEGAR_EXCECAO' : 'PEGAR_EXCECAO',
-        'TROCAR' : 'TROCAR',
-        'CASO_FOR' : 'CASO_FOR',
-        'SAIR_REPETICAO' : 'SAIR_REPETICAO',
-        'FUNCAO': 'FUNCAO',
         'LER' : 'LER',
         'IMPRIMIR' : 'IMPRIMIR',
         'RETORNA' : 'RETORNA',
-        'SAIR_TROCA' : 'SAIR_TROCA'
+        'SE' : 'SE',
+        'SENAO' : 'SENAO',
+        'SENAO_SE' : 'SENAO_SE',
+        'PARA':'PARA',
+        'ENQUANTO' : 'ENQUANTO',
+        'FACA' : 'FACA',
+        'FUNCAO': 'FUNCAO',
+        'CASO_FOR' : 'CASO_FOR',
+        'SAIR' : 'SAIR'
     }
+
 
     tokens =[
        
-        'identificador',
-        'numero',
+
+        'mais', #
+        'menos',#
+        'vezes',#
+        'dividir',#
+        'modulo',#
 
 
-        'operador_relacional',
-        'operador_matematico',
+        'dois_pontos',#
+        'ponto_virgula',#
+        'virgula', #
+        'ponto',#
+        'aspas'#
+        'aspas_simples'#
+        'comentario_uma_linha'
+        'comentario_n_linha'
 
-        'atribuicao',
-        'ponto_virgula', 
-        'dois_ponto', 
-        'virgula', 
-        'ponto_final',
-        'negacao', 
 
-        'tipo',
-        'valor_inteiro',
-        'valor_flutuante',
-        'valor_e_ou_logico',
-        'incremento_decremeto',
-        'atribuicao',
-        'resto_divisao',
-        'chave_abre',
-        'chave_fecha',
-        'colchete_abre',
-        'colchete_fecha',
-        'parentese_abre',
-        'parentese_fecha',
-        'texto',
-        'comentario_uma_linha',
-        'comentario_n_linhas',
+        'negacao',#
+         'igual',#
+        'mais_igual',#
+        'menos_igual',#
+        'vezes_igual',#
+        'divide_igual',#
+
+
         
-        'para',
-        'tentar_executar',
-        'pegar_excecao',
-        'trocar'
+        'menor',#
+        'maior',#
+        'menor_igual',#
+        'maior_igual',#
+        'exatamente_igual',#
+        'diferente',#
+        'e',#
+        'ou',#
+
+
+        'abre_parentese',#
+        'fecha_parentese',#
+        'abre_cochete',#
+        'fecha_colchete',#
+        'abre_chave',#
+        'fecha_chave',#
+      
+        'inteiro',
+        'flutuante',
+        'texto',
+        'variavel',#
+        'numero',#
+
+
     ] + list(reversed.values())
 
+
     # expressoes regulares dos tokens simples
+
 
     #matematicos
     t_mais   = r'\+'
@@ -75,47 +96,86 @@ def lexico(t,erro):
     t_dividir  = r'/'
     t_modulo = r'%'
     
-
     #pontos
-    t_atribuicao = r'='
+   
+    t_dois_pontos = r'\:'
     t_ponto_virgula = r'\;'
-    t_dois_ponto = r'\:'
     t_virgula = r'\,'
-    t_ponto_final = r'\.'
-    t_negacao = r'\!'
+    t_ponto = r'\.'
+    t_aspas = r'\"'
+    t_aspas_simples = r'\''
+
+
+    t_negacao = r'\~'
+    t_igual = r'\='
+    t_mais_igual = r'\+\='
+    t_menos_igual = r'\-\='
+    t_vezes_igual = r'\*\='
+    t_divide_igual = r'\/\='
+
+
+    t_menor = r'\<'
+    t_maior= r'\>'
+    t_menor_igual = r'\<\='
+    t_maior_igual = r'\>\='
+    t_duplo_igual = r'\=\='
+    t_diferente = r'\!\='
+    t_e= r'\&'
+    t_ou = r'\|'
+
+
+     # escopo
+
+
+    t_abre_parentese  = r'\('
+    t_fecha_parentese  = r'\)'
+    t_abre_colchete = r'\['
+    t_fecha_colchete = r'\]'
+    t_abre_chave = r'\{'
+    t_fecha_chave = r'\}'
+
+
+
 
     
-    # escopo 
-    t_chave_abre = r'\['
-    t_chave_fecha =r'\]'
-    t_colchete_abre =r'\{'
-    t_colchete_fecha = r'\}'
-    t_parentese_abre = r'\('
-    t_parentese_fechar = r'\)'
+
 
     #comentario
+
 
     t_comentario_uma_linha = r'#.*$'
     t_comentario_n_linha = r'#\*(.|\n)*?\*#'
 
+
     #expressoes regulares dos tokens complexos
 
-    def t_identificador(self,t):
+
+    def t_variavel(self,t):
         r'[a-zA-Z_][a-zA-Z_0-9]*'
         # verificando se sera, palavra reservada . caso seja maiuscula sera palavra reservada
-        t.type = self.reversed.get(t.value.lower(),'identificador')
+        t.type = self.reversed.get(t.value.lower(),'variavel')
         return lexico(t,f"nenhum")
+
+    
 
 
     def t_numero(self,t):
         r'-?\d+(\.\d+)?'
         return lexico(t,f"nenhum")
     
+
+    def t_flutuante(t):
+        r'([0-9]+\.[0-9]+)|([0-9]+\.[0-9]+)'
+        return t
+
+    def t_inteiro(t):
+        r'\d+'
+        t.value = int(t.value)
+        return t
+
     def t_texto(t):
         r'"[^(|\n)]*"'
         return lexico(t,f"nenhum")
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> df8d1f03f36fc23c35867c37e964d8790897ea31
+
+
+
