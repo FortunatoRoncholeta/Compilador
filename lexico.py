@@ -1,6 +1,6 @@
 import ply.lex as lex  # inportaçao da biblioteca 
 
-
+saidas = []
 def lexico(t,erro):
     saidas.append((t.lineno,t.lexpos,t.type,t.value,erro))
 
@@ -114,3 +114,5 @@ def lexico(t,erro):
     def t_texto(t):
         r'"[^(|\n)]*"'
         return lexico(t,f"nenhum")
+    
+    
