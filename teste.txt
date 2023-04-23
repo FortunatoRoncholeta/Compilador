@@ -1,0 +1,42 @@
+FUNCAO _principal()
+{
+    INTEIRO _valor_n;
+    INTEIRO _soma_pares = 0;
+    INTEIRO _multiplica_impares = 1; 
+    INTEIRO _qtd_par = 0;
+    INTEIRO _qtd_impar = 0;
+
+    TEXTO _op_soma = '1';
+    TEXTO _op_multiplica = '2';
+    TEXTO _op_sair = '3';
+    TEXTO _op_usuario; 
+    TEXTO _texto; 
+    _texto = "Escolha uma Opcao: 1 Soma Pares 2 Multiplica Impar 3 op_sair ";
+    IMPRIMIR(_texto)
+    LER(_op_usuario);
+    _texto = "Digite um valor de 0 a 10"
+    IMPRIMIR(_texto);
+    LER(_valor_n);
+    SE(_op_usuario == _op_soma){
+      ENQUANTO(_valor_n<=10){
+          SE(_valor_n % 2 == 0){
+		_soma_pares+=_valor_n;
+           _qtd_par+=1;
+        }
+    SENAO_SE(_op_usuario == _op_multiplica){
+       ENQUANTO(_valor_n<=10){            
+    	   SENAO_SE(_valor_n % 2 == 1){
+            _multiplica_impares*=_valor_n;
+            _qtd_impar+=1;
+        }
+    }
+    SENAO_SE(_op_usuario == _op_sair){
+        SAIR; 
+    }
+
+    IMPRIMIR('Soma pares:', _soma_pares);
+    IMPRIMIR('Multiplicacao de todos impares:', _multiplica_impares);
+    IMPRIMIR('Quantos pares foram lidos:', _qtd_par);
+    IMPRIMIR('Quantos impares foram lidos:', _qtd_impar);
+    RETORNA;
+};
