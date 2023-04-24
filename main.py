@@ -1,8 +1,8 @@
+from turtle import color
 import ply.lex as lex
 from lexico import *
 
 # Interface
-from cProfile import label
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
@@ -10,6 +10,8 @@ from tkinter import filedialog
 from tkinter import filedialog as fd
 
 root = tk.Tk() #cria a tela
+
+erros = 0
 class Application():
     def __init__(self):
         self.root = root
@@ -32,7 +34,7 @@ class Application():
 
     def tela(self):
         self.root.title("Compilador")
-        self.root.configure(background="white")
+        self.root.configure(background="grey")
         self.root.geometry("700x500")
         self.root.resizable(True, True)
         self.root.minsize(width=550, height=350)
@@ -44,34 +46,49 @@ class Application():
         self.frame_2.place(relx=0.02, rely=0.70, relwidth=0.96, relheight=0.20)
 
     def chama_analisador(self):
-        columns = ('linha', 'posicao', 'token', 'lexema', 'notificacao')
-        self.saida = ttk.Treeview(self.frame_2, height=5, columns=columns, show='headings')
-        self.saida.heading("linha", text='Linha')
-        self.saida.heading("posicao", text='Posicao referente ao inicio da entrada')
-        self.saida.heading("token", text='Token')
-        self.saida.heading("lexema", text='Lexema')
-        self.saida.heading("notificacao", text='Notificacao')
+        columns = ('Descricao')
+        self.saida = ttk.Treeview(self.frame_2, height=1, columns=columns, show='headings')
+        self.saida.heading("#0", text='')
+        self.saida.heading("#1", text='Descrição')
+        self.saida.column("#0", width=1, stretch=NO)
+        self.saida.column("#1", width=200)
 
         data = self.codigo_entry.get(1.0, "end-1c")
         # data.lower()
-        lexer = lex.lex()
-        lexer.input(data)
+        lexer = lex.lex() # Cria analisador lexico
 
+        lexer.input(data)
         
         # Tokenizar a entrada para passar para o analisador léxico
         for tok in lexer:
             print(tok.value)
+            global erros
+            c = find_column(data, tok)
 
-            if tok.type in reserved.values():
-                add_lista_saida(tok, f"palavra reservada")
+            if tok.type in ('texto_errado', 
+                            'variavel_errado', 
+                            'numero_errado'):
+                t = tok.type
+                t = t[:t.find('_errado')]
+                add_lista_saida(tok, c,  f" {t} mal formado(a)")
+                erros += 1    
+            elif tok.type == "INTEIRO":
+                max = (len(str(tok.value)))
+                if (max > 16):
+                    erros += 1
+                    add_lista_saida(tok, c, f"inteiro maior que a permitido")
+            elif tok.type in reserved.values():
+                add_lista_saida(tok, c, f"Palavra reservada.")
+            elif tok.type == 'variavel' and len(tok.value) > 25:
+                add_lista_saida(tok, c, f"Tamanho da variavel maior que o permitido")
             else:
-                add_lista_saida(tok, f" ")
+                add_lista_saida(tok, c, f"")
 
-        saida = open('saida.txt', 'w+')
+        saida = open('saida.txt', 'w')
 
         for retorno in saidas:
             self.saida.insert('', tk.END, values=retorno)
-            saida.write(str(retorno) + '\n')
+            saida.write(str(retorno[0]) + '\n')
 
         self.saida.place(relx=0.001, rely=0.01, relwidth=0.999, relheight=0.95)
 
@@ -94,7 +111,7 @@ class Application():
 
         # criação da label da analise lexica
         self.lb_analise = Label(text="Análise Léxica e Sintática", bg="white", font=('', 12))
-        self.lb_analise.place(relx=0.001, rely=0.62, relwidth=0.2, relheight=0.07)
+        self.lb_analise.place(relx=0.005, rely=0.62, relwidth=0.28, relheight=0.07)
 
         self.codigo_entry = tk.Text(self.frame_1)
         self.codigo_entry.place(relx=0.001, rely=0.001, relwidth=0.995, relheight=0.995)
@@ -113,9 +130,9 @@ class Application():
 
         def onOpen():
             tf = fd.askopenfilename(
-                initialdir="C:/Users/MainFrame/Desktop/",
+                initialdir="C:/",
                 title="Open Text file",
-                filetypes=(("Text Files", "*.txt"),)
+                filetypes=(("Text Files", "*.pitao"),)
             )
             tf = open(tf, 'r')
             entrada = tf.read()
@@ -123,11 +140,12 @@ class Application():
             tf.close()
 
         def onSave():
-            files = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
+            files = filedialog.asksaveasfile(mode='w', defaultextension=".pitao")
             t = self.codigo_entry.get(0.0, END)
             files.write(t.rstrip())
 
         def tokens():
+            # Cria Tela de tokens
             newWindow = Toplevel(root)
             newWindow.title("Tabela de Tokens")
             newWindow.configure(background="white")
@@ -135,13 +153,16 @@ class Application():
             newWindow.resizable(True, True)
             newWindow.minsize(width=550, height=350)
 
-            newWindow = ttk.Treeview(newWindow, height=3, column=('col1', 'col2', 'col3', 'col4'))
+            # Criando tabela 
+            newWindow = ttk.Treeview(newWindow, height=3, column=('col1', 'col2', 'col3', 'col4')) 
+            # Nomeando cabeçalhos
             newWindow.heading("#0", text='')
             newWindow.heading("#1", text='Tokens')
             newWindow.heading("#2", text='Lexemas')
             newWindow.heading("#3", text='Expressão Regular')
             newWindow.heading("#4", text='Descrição')
 
+            # Definindo largura cabeçalho
             newWindow.column("#0", width=1, stretch=NO)
             newWindow.column("#1", width=50, )
             newWindow.column("#2", width=200)
@@ -154,7 +175,6 @@ class Application():
             newWindow.insert("", 3, text="", values=("INICIO", "INICIO", "INICIO", "Palavra Reservada INICIO"))
             newWindow.insert("", 4, text="", values=("FIM", "FIM", "FIM", "Palavra Reservada FIM"))
             newWindow.insert("", 5, text="", values=("COMPILADORES", "COMPILADORES", "COMPILADORES", "Palavra Reservada COMPILADORES"))
-            newWindow.insert("", 6, text="", values=("mover_esquerda", "mover_esquerda", "mover_esquerda", "Palavra Reservada mover_esquerda"))
             newWindow.insert("", 7, text="", values=("LER", "LER", "LER", "Palavra Reservada LER"))
             newWindow.insert("", 8, text="", values=("IMPRIMIR", "IMPRIMIR", "IMPRIMIR", "Palavra Reservada IMPRIMIR"))
             newWindow.insert("", 9, text="", values=("RETORNA", "RETORNA", "RETORNA", "Palavra Reservada RETORNA"))
@@ -221,7 +241,7 @@ class Application():
         menubar.add_cascade(label="Arquivo", menu=filemenu)
         menubar.add_cascade(label="Tabela de Tokens", menu=filemenu2)
 
-        filemenu.add_command(label="Abrir Script", command=onOpen)
+        filemenu.add_command(label="Abrir Arquivo", command=onOpen)
         filemenu.add_command(label="Salvar Como", command=onSave)
         filemenu.add_separator()
         filemenu.add_command(label="Sair", command=Quit)

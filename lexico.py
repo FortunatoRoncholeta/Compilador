@@ -81,9 +81,10 @@ tokens = [
 
     'ignore',
 
-    'variavel_errado',
+    'variavel_errada',
     'numero_errado',
-    'texto_errado'
+    'texto_errado',
+    'caracter_invisivel'
 
 
 
@@ -157,46 +158,31 @@ t_comentario_uma_linha = r'\#.*'
 
 t_ignore  = ' \t'
 
-# expressoes regulares dos tokens complexos
-def t_variavel(t):
-    r'_[a-zA-Z_][a-zA-Z_0-9]*'
-
+def t_texto(t):
+    r'"[^(|\n)]*"|\'[^(|\n)]*\'' 
     return t
-    
-    # verificando se sera, palavra reservada .
-    if t.value in reserved:
 
-        t.type = reserved[t.value]
-        return lexico(t, f"Palavra Reservada")
+def t_texto_errado(t):
+    r'("[^"]*)|(\'[^\']*)'
+    return t 
 
-    else:
-        return lexico(t, f"Correto")
-
-def t_variavel_errado(t):
-    r'([0-9]+[a-z]+)|([@!#$%&*]+[a-z]+|[a-z]+\.[0-9]+|[a-z]+[@!#$%&*]+)'
+def t_variavel_errada(t):
+    r'^[^_\w]'
     return t
-    return lexico(t, f"veriavel com erro")
 
 def t_numero_errado(t):
     r'([0-9]+\.[a-z]+[0-9]+)|([0-9]+\.[a-z]+)|([0-9]+\.[0-9]+[a-z]+)'
     return t
-    return lexico(t, f"Numero com erro ")
 
-def t_texto(t):
-    r'["\'][^(|\n)]*["\']'
+# expressoes regulares dos tokens complexos
+def t_variavel(t):
+    r'_[a-zA-Z_0-9][a-zA-Z_0-9]*'
     return t
-    return lexico(t, f"Correto")
-
-def t_texto_errado(t):
-    r'("[^"]*)'
-    return t
-    return lexico(t, f"string (texto) com erro ")
 
 def t_flutuante(t):
     r'([0-9]+\.[0-9]+)|([0-9]+\.[0-9]+)'
     t.value = float(t.value)
     return t
-    return lexico(t, f"Correto")
 
 def t_inteiro(t):
     r'\d+'
@@ -204,14 +190,33 @@ def t_inteiro(t):
     return t
 
 def t_nova_linha(t):
-    r'\n+'
-    t.lexer.lineno += len(t.value)
+    r'\n'
+    t.lexer.lineno += 1
 
+#Regra de tratamento de erros
+erroslexicos = []
 def t_error(t):
-    return saidas.append((t.lineno, t.lexpos, f'invalido', t.value, f'Caracter não faz parte da linguagem'))
+    erroslexicos.append(["Erro Léxico. " + 
+                  "Linha: " + str(t.lineno) + " - " +
+                #   "Coluna: " + str(c) + " - " + 
+                  "Token não reconhecido - " + str(t.value)
+                  ])
+    t.lexer.skip(1)
 
-def add_lista_saida(t,notificacao):
-    saidas.append((t.lineno,t.lexpos,t.type,t.value, notificacao))
+def add_lista_saida(t,c,notificacao):
+    if str(notificacao) != '':
+        notificacao = 'Aviso: ' + str(notificacao)
+
+    saidas.append(["Linha: " + str(t.lineno) + " - " +
+                  "Coluna: " + str(c) + " - " + 
+                  "Token<" + str(t.type) + "," + str(t.value) + ">" +
+                  str(notificacao)
+                  ])
+
+def find_column(input, token):
+    line_start = input.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
+
 
 # Build the lexer
 lexer = lex.lex()
