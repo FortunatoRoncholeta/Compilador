@@ -1,0 +1,2 @@
+teste = []
+print(teste.pop())

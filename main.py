@@ -56,14 +56,56 @@ class Application():
         data = self.codigo_entry.get(1.0, "end-1c")
         # data.lower()
         lexer = lex.lex() # Cria analisador lexico
-
         lexer.input(data)
         
         # Tokenizar a entrada para passar para o analisador léxico
+        pilha_parenteses    = []
+        pilha_chaves        = []
+        pilha_colchete      = []
+        
+        
         for tok in lexer:
-            print(tok.value)
+            
             global erros
             c = find_column(data, tok)
+
+            if tok.type == 'abre_parentese':
+                pilha_parenteses.append(str(tok.lineno))
+            if tok.type == 'fecha_parentese':
+                if len(pilha_parenteses) == 0:
+                    erroslexicos.append(["Erro Léxico. " + 
+                                         "Linha: " + str(tok.lineno) + " - " +
+                                         #   "Coluna: " + str(c) + " - " + 
+                                         "Parentese fechado que não foi aberto."
+                                        ])
+                else:
+                    pilha_parenteses.pop()
+
+            if tok.type == 'abre_colchete':
+                pilha_colchete.append(str(tok.lineno))
+            if tok.type == 'fecha_colchete':
+                if len(pilha_colchete) == 0:
+                    erroslexicos.append(["Erro Léxico. " + 
+                                         "Linha: " + str(tok.lineno) + " - " +
+                                         #   "Coluna: " + str(c) + " - " + 
+                                         "Colchete fechado que não foi aberto."
+                                        ])
+                else:
+                    pilha_colchete.pop()
+                
+
+            if tok.type == 'abre_chave':
+                pilha_chaves.append(str(tok.lineno))
+            if tok.type == 'fecha_chave':
+                if len(pilha_chaves) == 0:
+                    erroslexicos.append(["Erro Léxico. " + 
+                                         "Linha: " + str(tok.lineno) + " - " +
+                                         #   "Coluna: " + str(c) + " - " + 
+                                         "Chave fechado que não foi aberto."
+                                        ])
+                else:
+                    pilha_chaves.pop()
+                
 
             if tok.type in ('texto_errado', 
                             'variavel_errado', 
@@ -83,6 +125,25 @@ class Application():
                 add_lista_saida(tok, c, f"Tamanho da variavel maior que o permitido")
             else:
                 add_lista_saida(tok, c, f"")
+
+        if len(pilha_parenteses) > 0:
+            erros+=1
+            self.saida.insert('', tk.END, values=["Parenteses aberto na linha " + pilha_parenteses.pop() + " não foi fechado."])   
+        if len(pilha_chaves) > 0:
+            erros+=1
+            self.saida.insert('', tk.END, values=["Chaves aberto na linha " + pilha_chaves.pop() + " não foi fechada."])       
+        if len(pilha_colchete) > 0:
+            erros+=1
+            self.saida.insert('', tk.END, values=["Colchetes aberto na linha "  + pilha_colchete.pop() + " não foi fechado."])     
+
+        for tok in erroslexicos:
+            self.saida.insert('', tk.END, values=tok)
+
+        tamerroslex = len(erroslexicos)
+        if tamerroslex == 0 and erros == 0:
+            self.saida.insert('', tk.END, values=["Análise Léxica Concluída sem Erros"])
+        else:
+            self.saida.insert('', tk.END, values=["Erro Léxico"])
 
         saida = open('saida.txt', 'w')
 

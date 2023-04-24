@@ -137,6 +137,362 @@ Linha: 33 - Coluna: 13 - Token<fecha_chave,}>
 Linha: 34 - Coluna: 9 - Token<fecha_chave,}>
 Linha: 35 - Coluna: 5 - Token<fecha_chave,}>
 Linha: 36 - Coluna: 5 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 36 - Coluna: 13 - Token<variavel,_op_usuario>
+Linha: 36 - Coluna: 25 - Token<duplo_igual,==>
+Linha: 36 - Coluna: 28 - Token<variavel,_op_sair>
+Linha: 36 - Coluna: 36 - Token<fecha_parentese,)>
+Linha: 36 - Coluna: 37 - Token<abre_chave,{>
+Linha: 37 - Coluna: 9 - Token<SAIR,SAIR>Aviso: Palavra reservada.
+Linha: 37 - Coluna: 13 - Token<ponto_virgula,;>
+Linha: 40 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 40 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 40 - Coluna: 14 - Token<texto,'Soma pares:'>
+Linha: 40 - Coluna: 27 - Token<virgula,,>
+Linha: 40 - Coluna: 29 - Token<variavel,_soma_pares>
+Linha: 40 - Coluna: 40 - Token<fecha_parentese,)>
+Linha: 40 - Coluna: 41 - Token<ponto_virgula,;>
+Linha: 41 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 41 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 41 - Coluna: 14 - Token<texto,'Multiplicacao de todos impares:'>
+Linha: 41 - Coluna: 47 - Token<virgula,,>
+Linha: 41 - Coluna: 49 - Token<variavel,_multiplica_impares>
+Linha: 41 - Coluna: 68 - Token<fecha_parentese,)>
+Linha: 41 - Coluna: 69 - Token<ponto_virgula,;>
+Linha: 42 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 42 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 42 - Coluna: 14 - Token<texto,'Quantos pares foram lidos:'>
+Linha: 42 - Coluna: 42 - Token<virgula,,>
+Linha: 42 - Coluna: 44 - Token<variavel,_qtd_par>
+Linha: 42 - Coluna: 52 - Token<fecha_parentese,)>
+Linha: 42 - Coluna: 53 - Token<ponto_virgula,;>
+Linha: 43 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 43 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 43 - Coluna: 14 - Token<texto,'Quantos impares foram lidos:'>
+Linha: 43 - Coluna: 44 - Token<virgula,,>
+Linha: 43 - Coluna: 46 - Token<variavel,_qtd_impar>
+Linha: 43 - Coluna: 56 - Token<fecha_parentese,)>
+Linha: 43 - Coluna: 57 - Token<ponto_virgula,;>
+Linha: 44 - Coluna: 5 - Token<RETORNA,RETORNA>Aviso: Palavra reservada.
+Linha: 44 - Coluna: 12 - Token<ponto_virgula,;>
+Linha: 45 - Coluna: 1 - Token<fecha_chave,}>
+Linha: 45 - Coluna: 2 - Token<ponto_virgula,;>
+Linha: 1 - Coluna: 1 - Token<FUNCAO,FUNCAO>Aviso: Palavra reservada.
+Linha: 1 - Coluna: 8 - Token<variavel,_principal>
+Linha: 1 - Coluna: 18 - Token<abre_parentese,(>
+Linha: 1 - Coluna: 19 - Token<fecha_parentese,)>
+Linha: 2 - Coluna: 1 - Token<abre_chave,{>
+Linha: 3 - Coluna: 13 - Token<variavel,_valor_n>
+Linha: 3 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 4 - Coluna: 13 - Token<variavel,_soma_pares>
+Linha: 4 - Coluna: 33 - Token<igual,=>
+Linha: 4 - Coluna: 35 - Token<inteiro,0>
+Linha: 4 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 5 - Coluna: 13 - Token<variavel,_multiplica_impares>
+Linha: 5 - Coluna: 33 - Token<igual,=>
+Linha: 5 - Coluna: 35 - Token<inteiro,1>
+Linha: 5 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 6 - Coluna: 13 - Token<variavel,_qtd_par>
+Linha: 6 - Coluna: 33 - Token<igual,=>
+Linha: 6 - Coluna: 35 - Token<inteiro,0>
+Linha: 6 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 7 - Coluna: 13 - Token<variavel,_qtd_impar>
+Linha: 7 - Coluna: 33 - Token<igual,=>
+Linha: 7 - Coluna: 35 - Token<inteiro,0>
+Linha: 7 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 9 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 9 - Coluna: 11 - Token<variavel,_op_soma>
+Linha: 9 - Coluna: 29 - Token<igual,=>
+Linha: 9 - Coluna: 31 - Token<texto,'1'>
+Linha: 9 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 10 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 10 - Coluna: 11 - Token<variavel,_op_multiplica>
+Linha: 10 - Coluna: 29 - Token<igual,=>
+Linha: 10 - Coluna: 31 - Token<texto,'2'>
+Linha: 10 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 11 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 11 - Coluna: 11 - Token<variavel,_op_sair>
+Linha: 11 - Coluna: 29 - Token<igual,=>
+Linha: 11 - Coluna: 31 - Token<texto,'3'>
+Linha: 11 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 12 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 12 - Coluna: 11 - Token<variavel,_op_usuario>
+Linha: 12 - Coluna: 22 - Token<ponto_virgula,;>
+Linha: 13 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 13 - Coluna: 11 - Token<variavel,_texto>
+Linha: 13 - Coluna: 17 - Token<ponto_virgula,;>
+Linha: 14 - Coluna: 5 - Token<variavel,_texto>
+Linha: 14 - Coluna: 12 - Token<igual,=>
+Linha: 14 - Coluna: 14 - Token<texto,"Escolha uma Opcao: 1 Soma Pares 2 Multiplica Impar 3 Sair">
+Linha: 14 - Coluna: 73 - Token<ponto_virgula,;>
+Linha: 15 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 15 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 15 - Coluna: 14 - Token<variavel,_texto>
+Linha: 15 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 16 - Coluna: 5 - Token<LER,LER>Aviso: Palavra reservada.
+Linha: 16 - Coluna: 8 - Token<abre_parentese,(>
+Linha: 16 - Coluna: 9 - Token<variavel,_op_usuario>
+Linha: 16 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 16 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 17 - Coluna: 5 - Token<variavel,_texto>
+Linha: 17 - Coluna: 12 - Token<igual,=>
+Linha: 17 - Coluna: 14 - Token<texto,"Digite um valor de 0 a 10">
+Linha: 18 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 18 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 18 - Coluna: 14 - Token<variavel,_texto>
+Linha: 18 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 18 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 19 - Coluna: 5 - Token<LER,LER>Aviso: Palavra reservada.
+Linha: 19 - Coluna: 8 - Token<abre_parentese,(>
+Linha: 19 - Coluna: 9 - Token<variavel,_valor_n>
+Linha: 19 - Coluna: 17 - Token<fecha_parentese,)>
+Linha: 19 - Coluna: 18 - Token<ponto_virgula,;>
+Linha: 20 - Coluna: 5 - Token<SE,SE>Aviso: Palavra reservada.
+Linha: 20 - Coluna: 7 - Token<abre_parentese,(>
+Linha: 20 - Coluna: 8 - Token<variavel,_op_usuario>
+Linha: 20 - Coluna: 20 - Token<duplo_igual,==>
+Linha: 20 - Coluna: 23 - Token<variavel,_op_soma>
+Linha: 20 - Coluna: 31 - Token<fecha_parentese,)>
+Linha: 20 - Coluna: 32 - Token<abre_chave,{>
+Linha: 21 - Coluna: 9 - Token<ENQUANTO,ENQUANTO>Aviso: Palavra reservada.
+Linha: 21 - Coluna: 17 - Token<abre_parentese,(>
+Linha: 21 - Coluna: 18 - Token<variavel,_valor_n>
+Linha: 21 - Coluna: 27 - Token<menor_igual,<=>
+Linha: 21 - Coluna: 30 - Token<inteiro,10>
+Linha: 21 - Coluna: 32 - Token<fecha_parentese,)>
+Linha: 21 - Coluna: 33 - Token<abre_chave,{>
+Linha: 22 - Coluna: 13 - Token<SE,SE>Aviso: Palavra reservada.
+Linha: 22 - Coluna: 15 - Token<abre_parentese,(>
+Linha: 22 - Coluna: 16 - Token<variavel,_valor_n>
+Linha: 22 - Coluna: 25 - Token<modulo,%>
+Linha: 22 - Coluna: 27 - Token<inteiro,2>
+Linha: 22 - Coluna: 29 - Token<duplo_igual,==>
+Linha: 22 - Coluna: 32 - Token<inteiro,0>
+Linha: 22 - Coluna: 33 - Token<fecha_parentese,)>
+Linha: 22 - Coluna: 34 - Token<abre_chave,{>
+Linha: 23 - Coluna: 11 - Token<variavel,_soma_pares>
+Linha: 23 - Coluna: 23 - Token<mais_igual,+=>
+Linha: 23 - Coluna: 26 - Token<variavel,_valor_n>
+Linha: 23 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 24 - Coluna: 17 - Token<variavel,_qtd_par>
+Linha: 24 - Coluna: 26 - Token<mais_igual,+=>
+Linha: 24 - Coluna: 29 - Token<inteiro,1>
+Linha: 24 - Coluna: 30 - Token<ponto_virgula,;>
+Linha: 25 - Coluna: 13 - Token<fecha_chave,}>
+Linha: 26 - Coluna: 9 - Token<fecha_chave,}>
+Linha: 27 - Coluna: 5 - Token<fecha_chave,}>
+Linha: 28 - Coluna: 5 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 28 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 28 - Coluna: 14 - Token<variavel,_op_usuario>
+Linha: 28 - Coluna: 26 - Token<duplo_igual,==>
+Linha: 28 - Coluna: 29 - Token<variavel,_op_multiplica>
+Linha: 28 - Coluna: 43 - Token<fecha_parentese,)>
+Linha: 28 - Coluna: 44 - Token<abre_chave,{>
+Linha: 29 - Coluna: 9 - Token<ENQUANTO,ENQUANTO>Aviso: Palavra reservada.
+Linha: 29 - Coluna: 17 - Token<abre_parentese,(>
+Linha: 29 - Coluna: 18 - Token<variavel,_valor_n>
+Linha: 29 - Coluna: 26 - Token<menor_igual,<=>
+Linha: 29 - Coluna: 28 - Token<inteiro,10>
+Linha: 29 - Coluna: 30 - Token<fecha_parentese,)>
+Linha: 29 - Coluna: 31 - Token<abre_chave,{>
+Linha: 30 - Coluna: 10 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 30 - Coluna: 18 - Token<abre_parentese,(>
+Linha: 30 - Coluna: 19 - Token<variavel,_valor_n>
+Linha: 30 - Coluna: 28 - Token<modulo,%>
+Linha: 30 - Coluna: 30 - Token<inteiro,2>
+Linha: 30 - Coluna: 32 - Token<duplo_igual,==>
+Linha: 30 - Coluna: 35 - Token<inteiro,1>
+Linha: 30 - Coluna: 36 - Token<fecha_parentese,)>
+Linha: 30 - Coluna: 37 - Token<abre_chave,{>
+Linha: 31 - Coluna: 17 - Token<variavel,_multiplica_impares>
+Linha: 31 - Coluna: 37 - Token<vezes_igual,*=>
+Linha: 31 - Coluna: 40 - Token<variavel,_valor_n>
+Linha: 31 - Coluna: 48 - Token<ponto_virgula,;>
+Linha: 32 - Coluna: 17 - Token<variavel,_qtd_impar>
+Linha: 32 - Coluna: 28 - Token<mais_igual,+=>
+Linha: 32 - Coluna: 31 - Token<inteiro,1>
+Linha: 32 - Coluna: 32 - Token<ponto_virgula,;>
+Linha: 33 - Coluna: 13 - Token<fecha_chave,}>
+Linha: 34 - Coluna: 9 - Token<fecha_chave,}>
+Linha: 35 - Coluna: 5 - Token<fecha_chave,}>
+Linha: 36 - Coluna: 5 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 36 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 36 - Coluna: 14 - Token<variavel,_op_usuario>
+Linha: 36 - Coluna: 26 - Token<duplo_igual,==>
+Linha: 36 - Coluna: 29 - Token<variavel,_op_sair>
+Linha: 36 - Coluna: 37 - Token<abre_chave,{>
+Linha: 37 - Coluna: 9 - Token<SAIR,SAIR>Aviso: Palavra reservada.
+Linha: 37 - Coluna: 13 - Token<ponto_virgula,;>
+Linha: 40 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 40 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 40 - Coluna: 14 - Token<texto,'Soma pares:'>
+Linha: 40 - Coluna: 27 - Token<virgula,,>
+Linha: 40 - Coluna: 29 - Token<variavel,_soma_pares>
+Linha: 40 - Coluna: 40 - Token<fecha_parentese,)>
+Linha: 40 - Coluna: 41 - Token<ponto_virgula,;>
+Linha: 41 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 41 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 41 - Coluna: 14 - Token<texto,'Multiplicacao de todos impares:'>
+Linha: 41 - Coluna: 47 - Token<virgula,,>
+Linha: 41 - Coluna: 49 - Token<variavel,_multiplica_impares>
+Linha: 41 - Coluna: 68 - Token<fecha_parentese,)>
+Linha: 41 - Coluna: 69 - Token<ponto_virgula,;>
+Linha: 42 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 42 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 42 - Coluna: 14 - Token<texto,'Quantos pares foram lidos:'>
+Linha: 42 - Coluna: 42 - Token<virgula,,>
+Linha: 42 - Coluna: 44 - Token<variavel,_qtd_par>
+Linha: 42 - Coluna: 52 - Token<fecha_parentese,)>
+Linha: 42 - Coluna: 53 - Token<ponto_virgula,;>
+Linha: 43 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 43 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 43 - Coluna: 14 - Token<texto,'Quantos impares foram lidos:'>
+Linha: 43 - Coluna: 44 - Token<virgula,,>
+Linha: 43 - Coluna: 46 - Token<variavel,_qtd_impar>
+Linha: 43 - Coluna: 56 - Token<fecha_parentese,)>
+Linha: 43 - Coluna: 57 - Token<ponto_virgula,;>
+Linha: 44 - Coluna: 5 - Token<RETORNA,RETORNA>Aviso: Palavra reservada.
+Linha: 44 - Coluna: 12 - Token<ponto_virgula,;>
+Linha: 45 - Coluna: 1 - Token<fecha_chave,}>
+Linha: 45 - Coluna: 2 - Token<ponto_virgula,;>
+Linha: 1 - Coluna: 1 - Token<FUNCAO,FUNCAO>Aviso: Palavra reservada.
+Linha: 1 - Coluna: 8 - Token<variavel,_principal>
+Linha: 1 - Coluna: 18 - Token<abre_parentese,(>
+Linha: 1 - Coluna: 19 - Token<fecha_parentese,)>
+Linha: 2 - Coluna: 1 - Token<abre_chave,{>
+Linha: 3 - Coluna: 13 - Token<variavel,_valor_n>
+Linha: 3 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 4 - Coluna: 13 - Token<variavel,_soma_pares>
+Linha: 4 - Coluna: 33 - Token<igual,=>
+Linha: 4 - Coluna: 35 - Token<inteiro,0>
+Linha: 4 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 5 - Coluna: 13 - Token<variavel,_multiplica_impares>
+Linha: 5 - Coluna: 33 - Token<igual,=>
+Linha: 5 - Coluna: 35 - Token<inteiro,1>
+Linha: 5 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 6 - Coluna: 13 - Token<variavel,_qtd_par>
+Linha: 6 - Coluna: 33 - Token<igual,=>
+Linha: 6 - Coluna: 35 - Token<inteiro,0>
+Linha: 6 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 7 - Coluna: 13 - Token<variavel,_qtd_impar>
+Linha: 7 - Coluna: 33 - Token<igual,=>
+Linha: 7 - Coluna: 35 - Token<inteiro,0>
+Linha: 7 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 9 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 9 - Coluna: 11 - Token<variavel,_op_soma>
+Linha: 9 - Coluna: 29 - Token<igual,=>
+Linha: 9 - Coluna: 31 - Token<texto,'1'>
+Linha: 9 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 10 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 10 - Coluna: 11 - Token<variavel,_op_multiplica>
+Linha: 10 - Coluna: 29 - Token<igual,=>
+Linha: 10 - Coluna: 31 - Token<texto,'2'>
+Linha: 10 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 11 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 11 - Coluna: 11 - Token<variavel,_op_sair>
+Linha: 11 - Coluna: 29 - Token<igual,=>
+Linha: 11 - Coluna: 31 - Token<texto,'3'>
+Linha: 11 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 12 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 12 - Coluna: 11 - Token<variavel,_op_usuario>
+Linha: 12 - Coluna: 22 - Token<ponto_virgula,;>
+Linha: 13 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 13 - Coluna: 11 - Token<variavel,_texto>
+Linha: 13 - Coluna: 17 - Token<ponto_virgula,;>
+Linha: 14 - Coluna: 5 - Token<variavel,_texto>
+Linha: 14 - Coluna: 12 - Token<igual,=>
+Linha: 14 - Coluna: 14 - Token<texto,"Escolha uma Opcao: 1 Soma Pares 2 Multiplica Impar 3 Sair">
+Linha: 14 - Coluna: 73 - Token<ponto_virgula,;>
+Linha: 15 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 15 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 15 - Coluna: 14 - Token<variavel,_texto>
+Linha: 15 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 16 - Coluna: 5 - Token<LER,LER>Aviso: Palavra reservada.
+Linha: 16 - Coluna: 8 - Token<abre_parentese,(>
+Linha: 16 - Coluna: 9 - Token<variavel,_op_usuario>
+Linha: 16 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 16 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 17 - Coluna: 5 - Token<variavel,_texto>
+Linha: 17 - Coluna: 12 - Token<igual,=>
+Linha: 17 - Coluna: 14 - Token<texto,"Digite um valor de 0 a 10">
+Linha: 18 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
+Linha: 18 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 18 - Coluna: 14 - Token<variavel,_texto>
+Linha: 18 - Coluna: 20 - Token<fecha_parentese,)>
+Linha: 18 - Coluna: 21 - Token<ponto_virgula,;>
+Linha: 19 - Coluna: 5 - Token<LER,LER>Aviso: Palavra reservada.
+Linha: 19 - Coluna: 8 - Token<abre_parentese,(>
+Linha: 19 - Coluna: 9 - Token<variavel,_valor_n>
+Linha: 19 - Coluna: 17 - Token<fecha_parentese,)>
+Linha: 19 - Coluna: 18 - Token<ponto_virgula,;>
+Linha: 20 - Coluna: 5 - Token<SE,SE>Aviso: Palavra reservada.
+Linha: 20 - Coluna: 7 - Token<abre_parentese,(>
+Linha: 20 - Coluna: 8 - Token<variavel,_op_usuario>
+Linha: 20 - Coluna: 20 - Token<duplo_igual,==>
+Linha: 20 - Coluna: 23 - Token<variavel,_op_soma>
+Linha: 20 - Coluna: 31 - Token<fecha_parentese,)>
+Linha: 20 - Coluna: 32 - Token<abre_chave,{>
+Linha: 21 - Coluna: 9 - Token<ENQUANTO,ENQUANTO>Aviso: Palavra reservada.
+Linha: 21 - Coluna: 17 - Token<abre_parentese,(>
+Linha: 21 - Coluna: 18 - Token<variavel,_valor_n>
+Linha: 21 - Coluna: 27 - Token<menor_igual,<=>
+Linha: 21 - Coluna: 30 - Token<inteiro,10>
+Linha: 21 - Coluna: 32 - Token<fecha_parentese,)>
+Linha: 21 - Coluna: 33 - Token<abre_chave,{>
+Linha: 22 - Coluna: 13 - Token<SE,SE>Aviso: Palavra reservada.
+Linha: 22 - Coluna: 15 - Token<abre_parentese,(>
+Linha: 22 - Coluna: 16 - Token<variavel,_valor_n>
+Linha: 22 - Coluna: 25 - Token<modulo,%>
+Linha: 22 - Coluna: 27 - Token<inteiro,2>
+Linha: 22 - Coluna: 29 - Token<duplo_igual,==>
+Linha: 22 - Coluna: 32 - Token<inteiro,0>
+Linha: 22 - Coluna: 33 - Token<fecha_parentese,)>
+Linha: 22 - Coluna: 34 - Token<abre_chave,{>
+Linha: 23 - Coluna: 11 - Token<variavel,_soma_pares>
+Linha: 23 - Coluna: 23 - Token<mais_igual,+=>
+Linha: 23 - Coluna: 26 - Token<variavel,_valor_n>
+Linha: 23 - Coluna: 34 - Token<ponto_virgula,;>
+Linha: 24 - Coluna: 17 - Token<variavel,_qtd_par>
+Linha: 24 - Coluna: 26 - Token<mais_igual,+=>
+Linha: 24 - Coluna: 29 - Token<inteiro,1>
+Linha: 24 - Coluna: 30 - Token<ponto_virgula,;>
+Linha: 25 - Coluna: 13 - Token<fecha_chave,}>
+Linha: 26 - Coluna: 9 - Token<fecha_chave,}>
+Linha: 27 - Coluna: 5 - Token<fecha_chave,}>
+Linha: 28 - Coluna: 5 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 28 - Coluna: 13 - Token<abre_parentese,(>
+Linha: 28 - Coluna: 14 - Token<variavel,_op_usuario>
+Linha: 28 - Coluna: 26 - Token<duplo_igual,==>
+Linha: 28 - Coluna: 29 - Token<variavel,_op_multiplica>
+Linha: 28 - Coluna: 43 - Token<fecha_parentese,)>
+Linha: 28 - Coluna: 44 - Token<abre_chave,{>
+Linha: 29 - Coluna: 9 - Token<ENQUANTO,ENQUANTO>Aviso: Palavra reservada.
+Linha: 29 - Coluna: 17 - Token<abre_parentese,(>
+Linha: 29 - Coluna: 18 - Token<variavel,_valor_n>
+Linha: 29 - Coluna: 26 - Token<menor_igual,<=>
+Linha: 29 - Coluna: 28 - Token<inteiro,10>
+Linha: 29 - Coluna: 30 - Token<fecha_parentese,)>
+Linha: 29 - Coluna: 31 - Token<abre_chave,{>
+Linha: 30 - Coluna: 10 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
+Linha: 30 - Coluna: 18 - Token<abre_parentese,(>
+Linha: 30 - Coluna: 19 - Token<variavel,_valor_n>
+Linha: 30 - Coluna: 28 - Token<modulo,%>
+Linha: 30 - Coluna: 30 - Token<inteiro,2>
+Linha: 30 - Coluna: 32 - Token<duplo_igual,==>
+Linha: 30 - Coluna: 35 - Token<inteiro,1>
+Linha: 30 - Coluna: 36 - Token<fecha_parentese,)>
+Linha: 30 - Coluna: 37 - Token<abre_chave,{>
+Linha: 31 - Coluna: 17 - Token<variavel,_multiplica_impares>
+Linha: 31 - Coluna: 37 - Token<vezes_igual,*=>
+Linha: 31 - Coluna: 40 - Token<variavel,_valor_n>
+Linha: 31 - Coluna: 48 - Token<ponto_virgula,;>
+Linha: 32 - Coluna: 17 - Token<variavel,_qtd_impar>
+Linha: 32 - Coluna: 28 - Token<mais_igual,+=>
+Linha: 32 - Coluna: 31 - Token<inteiro,1>
+Linha: 32 - Coluna: 32 - Token<ponto_virgula,;>
+Linha: 33 - Coluna: 13 - Token<fecha_chave,}>
+Linha: 34 - Coluna: 9 - Token<fecha_chave,}>
+Linha: 35 - Coluna: 5 - Token<fecha_chave,}>
+Linha: 36 - Coluna: 5 - Token<SENAO_SE,SENAO_SE>Aviso: Palavra reservada.
 Linha: 36 - Coluna: 13 - Token<abre_parentese,(>
 Linha: 36 - Coluna: 14 - Token<variavel,_op_usuario>
 Linha: 36 - Coluna: 26 - Token<duplo_igual,==>
@@ -146,6 +502,12 @@ Linha: 36 - Coluna: 38 - Token<abre_chave,{>
 Linha: 37 - Coluna: 9 - Token<SAIR,SAIR>Aviso: Palavra reservada.
 Linha: 37 - Coluna: 13 - Token<ponto_virgula,;>
 Linha: 38 - Coluna: 5 - Token<fecha_chave,}>
+Linha: 39 - Coluna: 5 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 39 - Coluna: 11 - Token<variavel,_teste>
+Linha: 39 - Coluna: 18 - Token<igual,=>
+Linha: 39 - Coluna: 20 - Token<abre_colchete,[>
+Linha: 39 - Coluna: 21 - Token<abre_colchete,[>
+Linha: 39 - Coluna: 22 - Token<fecha_colchete,]>
 Linha: 40 - Coluna: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
 Linha: 40 - Coluna: 13 - Token<abre_parentese,(>
 Linha: 40 - Coluna: 14 - Token<texto,'Soma pares:'>

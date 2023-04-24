@@ -144,8 +144,8 @@ t_ou = r'\|'
 
 # escopo
 
-t_abre_parentese = r'\('
-t_fecha_parentese = r'\)'
+t_abre_parentese    = r'\('
+t_fecha_parentese   = r'\)'
 t_abre_colchete = r'\['
 t_fecha_colchete = r'\]'
 t_abre_chave = r'\{'
@@ -153,7 +153,7 @@ t_fecha_chave = r'\}'
 
 # comentario
 
-t_comentario_uma_linha = r'\#.*'
+t_comentario_uma_linha = r'\#[a-zA-Z-0-9]+'
 # t_comentario_n_linha = r'#\*(.|\n)*?\*#'
 
 t_ignore  = ' \t'
@@ -167,7 +167,7 @@ def t_texto_errado(t):
     return t 
 
 def t_variavel_errada(t):
-    r'^[^_\w]'
+    r'^[^_A-Za-z0-9]'
     return t
 
 def t_numero_errado(t):
