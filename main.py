@@ -167,11 +167,11 @@ class Application():
         self.bt_executar.place(relx=0.85, rely=0.92, relwidth=0.1, relheight=0.05)
 
         # criação da label e entrada do código
-        self.lb_codigo = Label(text="Código Fonte", bg="white", font=('', 12))
+        self.lb_codigo = Label(text="Codigo Fonte", bg="white", font=('', 12))
         self.lb_codigo.place(relx=0.001, rely=-0.001, relwidth=0.2, relheight=0.07)
 
         # criação da label da analise lexica
-        self.lb_analise = Label(text="Análise Léxica e Sintática", bg="white", font=('', 12))
+        self.lb_analise = Label(text="Saida", bg="white", font=('', 12))
         self.lb_analise.place(relx=0.005, rely=0.62, relwidth=0.28, relheight=0.07)
 
         self.codigo_entry = tk.Text(self.frame_1)
