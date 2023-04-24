@@ -1,9 +1,1 @@
-Linha: 1 - Coluna: 1 - Token<FUNCAO,FUNCAO>Aviso: Palavra reservada.
-Linha: 1 - Coluna: 8 - Token<variavel,_variavel>
-Linha: 1 - Coluna: 17 - Token<abre_parentese,(>
-Linha: 1 - Coluna: 18 - Token<fecha_parentese,)>
-Linha: 1 - Coluna: 19 - Token<abre_chave,{>
-Linha: 3 - Coluna: 9 - Token<variavel,_valor>
-Linha: 3 - Coluna: 16 - Token<igual,=>
-Linha: 3 - Coluna: 17 - Token<inteiro,3>
-Linha: 4 - Coluna: 1 - Token<ponto_virgula,;>
+Linha: 1 - Coluna: 1 - Token<TINTEIRO,INTEIRO>Aviso: Palavra reservada.
