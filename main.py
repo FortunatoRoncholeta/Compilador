@@ -17,6 +17,7 @@ root = tk.Tk()  # cria a tela
 
 erros = 0
 
+
 class Application():
     def __init__(self):
         self.root = root
@@ -158,7 +159,8 @@ class Application():
             qtderrossintaticos = len(errossintaticos)
             if qtderrossintaticos == 0:
                 print('passou "qtderrossintaticos == 0"')
-                self.saida.insert('', tk.END, values=["Análise Sintática Concluída sem Erros"])
+                self.saida.insert('', tk.END, values=[
+                                  "Análise Sintática Concluída sem Erros"])
             else:
                 print('passou "qtderrossintaticos == 0"')
                 self.saida.insert('', tk.END, values=["Erro Sintático"])
@@ -306,15 +308,7 @@ class Application():
             newWindow.insert("", 21, text="", values=(
                 "SAIR", "SAIR", "SAIR", "Palavra Reservada SAIR"))
             newWindow.insert("", 22, text="", values=(
-                "mais", "+", "+", "Operador Matemático mais"))
-            newWindow.insert("", 23, text="", values=(
-                "menos", "-", "-", "Operador Matemático menos"))
-            newWindow.insert("", 24, text="", values=(
-                "vezes", "*", "*", "Operador Matemático vezes"))
-            newWindow.insert("", 25, text="", values=(
-                "dividir", "/", "/", "Operador Matemático divide"))
-            newWindow.insert("", 26, text="", values=(
-                "modulo", "%", "%", "Operador Matemático modulo"))
+                "OPmath", "+,-,*,/,%", "[+\-*|/%]", "Operador Matemático "))
 
             newWindow.insert("", 27, text="", values=(
                 "abre_parenteses", "(", "(", "Operador de Prioridade abre parenteses"))
@@ -330,21 +324,12 @@ class Application():
                 "fecha_colchetes", "]", "]", "Operador de Prioridade fecha colchetes"))
 
             newWindow.insert("", 33, text="", values=(
-                "menor", "<", "<", "Operador Relacional menor"))
+                "OPatr", "=,+=,-=,*=,/=", "[+\-*|/%]?=|[+\-*|/]=", "Operador atribuicao"))
             newWindow.insert("", 34, text="", values=(
-                "maior", ">", ">", "Operador Relacional maior"))
-            newWindow.insert("", 35, text="", values=(
-                "menor_igual", "<=", "<=", "Operador Relacional menor igual"))
-            newWindow.insert("", 36, text="", values=(
-                "maior_igual", ">=", ">=", "Operador Relacional maior igual"))
-            newWindow.insert("", 37, text="", values=(
-                "duplo_igual", "==", "==", "Operador Relacional duplo igual"))
-            newWindow.insert("", 38, text="", values=(
-                "diferente", "!=", "!=", "Operador Relacional diferente"))
+                "OPcomp", "<.>,<=,>=,==,!=", " [<>]=?|==|!= ", "Operador comparador"))
+
             newWindow.insert("", 39, text="", values=(
-                "e", "&", "&", "Operador Relacional e"))
-            newWindow.insert("", 40, text="", values=(
-                "ou", "|", "|", "Operador Relacional ou"))
+                "OPlog", "&& , ||", "&&|\|\|", "Operador Relacional"))
 
             newWindow.insert("", 41, text="", values=(
                 "inteiro", "0,1,2,3,4,5,6,7,8,9", "0|1|2|3|4|5|6|7|8|9", "Dígito Númerico Inteiro"))
@@ -374,16 +359,6 @@ class Application():
 
             newWindow.insert("", 52, text="", values=(
                 "negacao", "~", "~", "Operador de Atribuição negação"))
-            newWindow.insert("", 53, text="", values=(
-                "igual", "=", "=", "Comando de Atribuição igual"))
-            newWindow.insert("", 54, text="", values=(
-                "mais_igual", "+=", "+=", "Comando de Atribuição mais igual"))
-            newWindow.insert("", 55, text="", values=(
-                "menos_igual", "-=", "-=", "Comando de Atribuição menos igual"))
-            newWindow.insert("", 56, text="", values=(
-                "vezes_igual", "*=", "*=", "Comando de Atribuição vezes igual"))
-            newWindow.insert("", 57, text="", values=(
-                "divide_igual", "/=", "/=", "Comando de Atribuição divide igual"))
 
             label.pack(pady=10)
             mainloop()
