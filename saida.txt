@@ -1,1 +1,2 @@
-Linha: 1 - Coluna: 1 - Token<TINTEIRO,INTEIRO>Aviso: Palavra reservada.
+Linha: 1 - Coluna: 1 - Token<IFSULDEMINAS,IFSULDEMINAS>Aviso: Palavra reservada.
+Linha: 1 - Coluna: 13 - Token<ponto_virgula,;>

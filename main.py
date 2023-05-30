@@ -1,6 +1,9 @@
 from turtle import color
 import ply.lex as lex
+import ply as yacc
 from lexico import *
+from sintatico import *
+
 
 # Interface
 from tkinter import *
@@ -8,11 +11,11 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import filedialog as fd
+from cProfile import label
 
 root = tk.Tk()  # cria a tela
 
 erros = 0
-
 
 class Application():
     def __init__(self):
@@ -62,6 +65,8 @@ class Application():
         # data.lower()
         lexer = lex.lex()  # Cria analisador lexico
         lexer.input(data)
+
+        parser = yacc.yacc()
 
         # Tokenizar a entrada para passar para o analisador léxico
         pilha_parenteses = []
@@ -149,6 +154,14 @@ class Application():
         if tamerroslex == 0 and erros == 0:
             self.saida.insert('', tk.END, values=[
                               "Análise Léxica Concluída sem Erros"])
+            parser.parse(data)
+            qtderrossintaticos = len(errossintaticos)
+            if qtderrossintaticos == 0:
+                print('passou "qtderrossintaticos == 0"')
+                self.saida.insert('', tk.END, values=["Análise Sintática Concluída sem Erros"])
+            else:
+                print('passou "qtderrossintaticos == 0"')
+                self.saida.insert('', tk.END, values=["Erro Sintático"])
         else:
             self.saida.insert('', tk.END, values=["Erro Léxico"])
 

@@ -1,2 +1,2 @@
 ply
-tkinter
+tk

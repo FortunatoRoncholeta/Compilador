@@ -236,4 +236,4 @@ def find_column(input, token):
 
 
 # Build the lexer
-lexer = lex.lex()
+# lexer = lex.lex()
