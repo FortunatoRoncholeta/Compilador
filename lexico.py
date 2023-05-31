@@ -185,7 +185,7 @@ def t_flutuante(t):
 
 
 def t_inteiro(t):
-    r'\d+'
+    r'\b\d{1,10}\b'
     t.value = int(t.value)
     return t
 
