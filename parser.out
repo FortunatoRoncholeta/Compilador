@@ -9,6 +9,10 @@ Unused terminals:
     FUNCAO
     IMPRIMIR
     LER
+    OPatr
+    OPcomp
+    OPlog
+    OPmath
     PARA
     RETORNA
     SAIR
@@ -24,39 +28,20 @@ Unused terminals:
     aspas_simples
     caracter_invisivel
     comentario_uma_linha
-    diferente
-    divide_igual
-    dividir
     dois_pontos
-    duplo_igual
-    e
-    exatamente_igual
     fecha_chave
     fecha_colchete
     fecha_parentese
     flutuante
     ignore
-    igual
     inteiro
-    maior
-    maior_igual
-    mais
-    mais_igual
-    menor
-    menor_igual
-    menos
-    menos_igual
-    modulo
     negacao
     numero_errado
-    ou
     ponto
     texto
     texto_errado
     variavel
     variavel_errada
-    vezes
-    vezes_igual
     virgula
 
 Grammar
@@ -82,6 +67,10 @@ IFSULDEMINAS         : 3
 IMPRIMIR             : 
 INICIO               : 4
 LER                  : 
+OPatr                : 
+OPcomp               : 
+OPlog                : 
+OPmath               : 
 PARA                 : 
 RETORNA              : 
 SAIR                 : 
@@ -97,41 +86,22 @@ aspas                :
 aspas_simples        : 
 caracter_invisivel   : 
 comentario_uma_linha : 
-diferente            : 
-divide_igual         : 
-dividir              : 
 dois_pontos          : 
-duplo_igual          : 
-e                    : 
 error                : 
-exatamente_igual     : 
 fecha_chave          : 
 fecha_colchete       : 
 fecha_parentese      : 
 flutuante            : 
 ignore               : 
-igual                : 
 inteiro              : 
-maior                : 
-maior_igual          : 
-mais                 : 
-mais_igual           : 
-menor                : 
-menor_igual          : 
-menos                : 
-menos_igual          : 
-modulo               : 
 negacao              : 
 numero_errado        : 
-ou                   : 
 ponto                : 
 ponto_virgula        : 3 4 5 6
 texto                : 
 texto_errado         : 
 variavel             : 
 variavel_errada      : 
-vezes                : 
-vezes_igual          : 
 virgula              : 
 
 Nonterminals, with rules where they appear

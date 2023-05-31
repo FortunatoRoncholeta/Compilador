@@ -32,11 +32,7 @@ reserved = {
 }
 
 tokens = [
-    'mais',  # +
-    'menos',  # -
-    'vezes',  # *
-    'dividir',  # /
-    'modulo',  # %
+    'OPmath',  # +
 
 
     'dois_pontos',
@@ -50,23 +46,13 @@ tokens = [
 
 
     'negacao',
-    'igual',
-    'mais_igual',
-    'menos_igual',
-    'vezes_igual',
-    'divide_igual',
+    'OPatr',
 
 
+    'OPcomp',
 
-    'menor',
-    'maior',
-    'menor_igual',
-    'maior_igual',
-    'duplo_igual',
-    'exatamente_igual',
-    'diferente',
-    'e',
-    'ou',
+    'OPlog',
+
 
 
     'abre_parentese',
@@ -113,11 +99,7 @@ t_FLUTUANTE = r'FLUTUANTE'
 t_TEXTO = r'TEXTO'
 
 # matematicos
-t_mais = r'\+'
-t_menos = r'-'
-t_vezes = r'\*'
-t_dividir = r'/'
-t_modulo = r'%'
+
 
 # pontos
 
@@ -129,20 +111,7 @@ t_aspas = r'\"'
 t_aspas_simples = r'\''
 
 t_negacao = r'\~'
-t_igual = r'\='
-t_mais_igual = r'\+\='
-t_menos_igual = r'\-\='
-t_vezes_igual = r'\*\='
-t_divide_igual = r'\/\='
 
-t_menor = r'\<'
-t_maior = r'\>'
-t_menor_igual = r'\<\='
-t_maior_igual = r'\>\='
-t_duplo_igual = r'\=\='
-t_diferente = r'\!\='
-t_e = r'\&'
-t_ou = r'\|'
 
 # escopo
 
@@ -160,6 +129,26 @@ t_comentario_uma_linha = r'\^[a-zA-Z-0-9]+'
 # t_comentario_n_linha = r'#\*(.|\n)*?\*#'
 
 t_ignore = ' \t'
+
+
+def t_OPmath(t):
+    r'[+\-*/%]'
+    return t
+
+
+def t_OPatr(t):
+    r'\+=|-=|\*=|\\=|='
+    return t
+
+
+def t_OPcomp(t):
+    r'[<>]=?|==|!='
+    return t
+
+
+def t_OPlog(t):
+    r'&&|\|\|'
+    return t
 
 
 def t_texto(t):
