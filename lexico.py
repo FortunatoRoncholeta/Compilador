@@ -152,12 +152,12 @@ def t_OPlog(t):
 
 
 def t_texto(t):
-    r'"[^(|\n)]*"|\'[^(|\n)]*\''
+    r'"(.{1,144})"'
     return t
 
 
 def t_texto_errado(t):
-    r'("[^"]*)|(\'[^\']*)'
+    r'"(.{145,})"'
     return t
 
 

@@ -1,4 +1,4 @@
-Linha: 1 - Coluna: 1 - Token<TINTEIRO,INTEIRO>Aviso: Palavra reservada.
-Linha: 1 - Coluna: 9 - Token<variavel,_X>
-Linha: 1 - Coluna: 11 - Token<OPatr,=>
-Linha: 1 - Coluna: 12 - Token<inteiro,2222222222>
+Linha: 1 - Coluna: 1 - Token<TEXTO,TEXTO>Aviso: Palavra reservada.
+Linha: 1 - Coluna: 7 - Token<variavel,_X>
+Linha: 1 - Coluna: 9 - Token<OPatr,=>
+Linha: 1 - Coluna: 10 - Token<texto,"testeasafafghvhjdsjfjdsjf ajfdjsjfiadasdasdasdddddddddddddddddddd asdasdas   222,  !@#    222sfsfsaiajf 23458 asd">
