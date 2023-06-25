@@ -27,15 +27,20 @@ class Application():
         self.Menus()
         root.mainloop()
 
-    def limpa_telaentrada(self):
-        self.codigo_entry.delete(1.0, END)
+    def limpa_saida(self):
         for i in self.saida.get_children():
             self.saida.delete(i)
         saidas.clear()
+        erroslexicos.clear()
         global erros
         erros = 0
-        self.frame_1.update()
         self.frame_2.update()
+        root.update()
+
+    def limpa_telaentrada(self):
+        self.codigo_entry.delete(1.0, END)
+        self.limpa_saida()
+        self.frame_1.update()
         root.update()
 
     def tela(self):
@@ -53,7 +58,7 @@ class Application():
                              highlightbackground="grey", highlightthickness=3)
         self.frame_2.place(relx=0.02, rely=0.70, relwidth=0.96, relheight=0.20)
 
-    def chama_analisador(self):
+    def chama_analisador(self): 
         columns = ('Descricao')
         self.saida = ttk.Treeview(
             self.frame_2, height=1, columns=columns, show='headings')
@@ -61,7 +66,7 @@ class Application():
         self.saida.heading("#1", text='Descrição')
         self.saida.column("#0", width=1, stretch=NO)
         self.saida.column("#1", width=200)
-
+        self.limpa_saida()
         data = self.codigo_entry.get(1.0, "end-1c")
         # data.lower()
         lexer = lex.lex()  # Cria analisador lexico

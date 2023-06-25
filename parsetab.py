@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'CASO_FOR COMPILADORES ENQUANTO FACA FIM FLUTUANTE FUNCAO IFSULDEMINAS IMPRIMIR INICIO LER OPatr OPcomp OPlog OPmath PARA RETORNA SAIR SE SENAO SENAO_SE TEXTO TINTEIRO abre_chave abre_colchete abre_parentese aspas aspas_simples caracter_invisivel comentario_uma_linha dois_pontos fecha_chave fecha_colchete fecha_parentese flutuante ignore inteiro negacao nova_linha numero_errado ponto ponto_virgula texto texto_errado variavel variavel_errada virgula\n    statements : statements statement\n    \n    statements : statement\n    \n    statement : IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula\n    \n    statement : comentario_uma_linha\n    '
+_lr_signature = 'CASO_FOR COMPILADORES ENQUANTO FACA FIM FLUTUANTE FUNCAO IFSULDEMINAS IMPRIMIR INICIO INTEIRO LER OPatr OPatr_simples OPcomp OPlog OPmath PARA RETORNA SAIR SE SENAO SENAO_SE TEXTO abre_chave abre_colchete abre_parentese caracter_invisivel comentario_uma_linha dois_pontos fecha_chave fecha_colchete fecha_parentese flutuante ignore inteiro negacao nova_linha numero_errado ponto ponto_virgula texto texto_errado variavel variavel_errada virgula\n    statements : statements statement\n    \n    statements : statement\n    \n    statement : IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula\n              | IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula FIM ponto_virgula\n    \n    statement : comentario_uma_linha\n    \n    statement : INTEIRO variavel OPatr_simples inteiro ponto_virgula\n              | INTEIRO variavel OPatr_simples flutuante ponto_virgula\n              | INTEIRO variavel ponto_virgula\n              | FLUTUANTE variavel OPatr_simples flutuante ponto_virgula\n              | FLUTUANTE variavel OPatr_simples inteiro ponto_virgula\n              | FLUTUANTE variavel ponto_virgula\n              | TEXTO variavel OPatr_simples texto ponto_virgula\n              | TEXTO variavel ponto_virgula\n    \n    statement : variavel OPatr_simples inteiro ponto_virgula\n              | variavel OPatr_simples flutuante ponto_virgula\n              | variavel OPatr inteiro ponto_virgula\n              | variavel OPatr flutuante ponto_virgula\n              | variavel OPatr variavel ponto_virgula\n              | variavel OPatr_simples texto ponto_virgula\n              | variavel OPatr_simples LER abre_parentese texto fecha_parentese ponto_virgula\n              | variavel OPatr_simples LER abre_parentese variavel fecha_parentese ponto_virgula\n              | variavel OPatr_simples LER abre_parentese fecha_parentese ponto_virgula\n    '
     
-_lr_action_items = {'IFSULDEMINAS':([0,1,2,4,5,10,11,13,],[3,3,-2,-4,-1,3,3,-3,]),'comentario_uma_linha':([0,1,2,4,5,10,11,13,],[4,4,-2,-4,-1,4,4,-3,]),'$end':([1,2,4,5,13,],[0,-2,-4,-1,-3,]),'FIM':([2,4,5,11,13,],[-2,-4,-1,12,-3,]),'ponto_virgula':([3,7,9,12,],[6,8,10,13,]),'INICIO':([6,],[7,]),'COMPILADORES':([8,],[9,]),}
+_lr_action_items = {'IFSULDEMINAS':([0,1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[3,3,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,3,-22,3,-21,-20,-4,-3,]),'comentario_uma_linha':([0,1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[4,4,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,4,-22,4,-21,-20,-4,-3,]),'INTEIRO':([0,1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[5,5,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,5,-22,5,-21,-20,-4,-3,]),'FLUTUANTE':([0,1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[7,7,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,7,-22,7,-21,-20,-4,-3,]),'TEXTO':([0,1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[8,8,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,8,-22,8,-21,-20,-4,-3,]),'variavel':([0,1,2,4,5,7,8,9,13,18,27,29,33,34,35,36,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[6,6,-2,-5,11,14,15,-1,23,-8,-11,-13,-14,-15,-19,46,-18,-16,-17,-6,-7,-9,-10,-12,6,-22,6,-21,-20,-4,-3,]),'$end':([1,2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,55,58,59,61,62,],[0,-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,-22,-21,-20,-4,-3,]),'FIM':([2,4,9,18,27,29,33,34,35,37,38,39,44,45,49,50,51,52,55,56,58,59,61,62,],[-2,-5,-1,-8,-11,-13,-14,-15,-19,-18,-16,-17,-6,-7,-9,-10,-12,57,-22,60,-21,-20,-4,-3,]),'ponto_virgula':([3,11,14,15,16,19,20,21,23,24,25,31,32,40,41,42,43,48,53,54,57,60,],[10,18,27,29,30,33,34,35,37,38,39,44,45,49,50,51,52,55,58,59,61,62,]),'OPatr_simples':([6,11,14,15,],[12,17,26,28,]),'OPatr':([6,],[13,]),'INICIO':([10,],[16,]),'inteiro':([12,13,17,26,],[19,24,31,41,]),'flutuante':([12,13,17,26,],[20,25,32,40,]),'texto':([12,28,36,],[21,42,47,]),'LER':([12,],[22,]),'abre_parentese':([22,],[36,]),'COMPILADORES':([30,],[43,]),'fecha_parentese':([36,46,47,],[48,53,54,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statements':([0,10,],[1,11,]),'statement':([0,1,10,11,],[2,5,2,5,]),}
+_lr_goto_items = {'statements':([0,52,],[1,56,]),'statement':([0,1,52,56,],[2,9,2,9,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,8 +27,26 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statements","S'",1,None,None,None),
-  ('statements -> statements statement','statements',2,'p_statements_multiple','sintatico.py',22),
-  ('statements -> statement','statements',1,'p_statements_single','sintatico.py',27),
-  ('statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula','statement',9,'p_statement_codigo','sintatico.py',34),
-  ('statement -> comentario_uma_linha','statement',1,'p_statement_comentario_uma_linha','sintatico.py',39),
+  ('statements -> statements statement','statements',2,'p_statements_multiple','sintatico.py',20),
+  ('statements -> statement','statements',1,'p_statements_single','sintatico.py',25),
+  ('statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula','statement',9,'p_statement_codigo','sintatico.py',54),
+  ('statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula FIM ponto_virgula','statement',8,'p_statement_codigo','sintatico.py',55),
+  ('statement -> comentario_uma_linha','statement',1,'p_statement_comentario_uma_linha','sintatico.py',60),
+  ('statement -> INTEIRO variavel OPatr_simples inteiro ponto_virgula','statement',5,'p_statement_declaracao_variavel','sintatico.py',65),
+  ('statement -> INTEIRO variavel OPatr_simples flutuante ponto_virgula','statement',5,'p_statement_declaracao_variavel','sintatico.py',66),
+  ('statement -> INTEIRO variavel ponto_virgula','statement',3,'p_statement_declaracao_variavel','sintatico.py',67),
+  ('statement -> FLUTUANTE variavel OPatr_simples flutuante ponto_virgula','statement',5,'p_statement_declaracao_variavel','sintatico.py',68),
+  ('statement -> FLUTUANTE variavel OPatr_simples inteiro ponto_virgula','statement',5,'p_statement_declaracao_variavel','sintatico.py',69),
+  ('statement -> FLUTUANTE variavel ponto_virgula','statement',3,'p_statement_declaracao_variavel','sintatico.py',70),
+  ('statement -> TEXTO variavel OPatr_simples texto ponto_virgula','statement',5,'p_statement_declaracao_variavel','sintatico.py',71),
+  ('statement -> TEXTO variavel ponto_virgula','statement',3,'p_statement_declaracao_variavel','sintatico.py',72),
+  ('statement -> variavel OPatr_simples inteiro ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',77),
+  ('statement -> variavel OPatr_simples flutuante ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',78),
+  ('statement -> variavel OPatr inteiro ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',79),
+  ('statement -> variavel OPatr flutuante ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',80),
+  ('statement -> variavel OPatr variavel ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',81),
+  ('statement -> variavel OPatr_simples texto ponto_virgula','statement',4,'p_statement_atribuicao_variavel','sintatico.py',82),
+  ('statement -> variavel OPatr_simples LER abre_parentese texto fecha_parentese ponto_virgula','statement',7,'p_statement_atribuicao_variavel','sintatico.py',83),
+  ('statement -> variavel OPatr_simples LER abre_parentese variavel fecha_parentese ponto_virgula','statement',7,'p_statement_atribuicao_variavel','sintatico.py',84),
+  ('statement -> variavel OPatr_simples LER abre_parentese fecha_parentese ponto_virgula','statement',6,'p_statement_atribuicao_variavel','sintatico.py',85),
 ]

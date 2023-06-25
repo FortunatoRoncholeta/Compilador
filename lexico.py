@@ -26,7 +26,7 @@ reserved = {
     'CASO_FOR': 'CASO_FOR',
     'SAIR': 'SAIR',
     'FUNCAO': 'FUNCAO',
-    'TINTEIRO': 'TINTEIRO',
+    'INTEIRO': 'INTEIRO',
     'FLUTUANTE': 'FLUTUANTE',
     'TEXTO': 'TEXTO'
 }
@@ -39,14 +39,15 @@ tokens = [
     'ponto_virgula',
     'virgula',
     'ponto',
-    'aspas',
-    'aspas_simples',
+    # 'aspas',
+    # 'aspas_simples',
     'comentario_uma_linha',
     # 'comentario_n_linha',
 
 
     'negacao',
     'OPatr',
+    'OPatr_simples',
 
 
     'OPcomp',
@@ -95,7 +96,7 @@ t_FACA = r'FACA'
 t_FUNCAO = r'FUNCAO'
 t_CASO_FOR = r'CASO_FOR'
 t_SAIR = r'SAIR'
-t_TINTEIRO = r'INTEIRO'
+t_INTEIRO = r'INTEIRO'
 t_FLUTUANTE = r'FLUTUANTE'
 t_TEXTO = r'TEXTO'
 
@@ -108,8 +109,8 @@ t_dois_pontos = r'\:'
 t_ponto_virgula = r'\;'
 t_virgula = r'\,'
 t_ponto = r'\.'
-t_aspas = r'\"'
-t_aspas_simples = r'\''
+# t_aspas = r'\"'
+# t_aspas_simples = r'\''
 
 t_negacao = r'\~'
 
@@ -138,7 +139,11 @@ def t_OPmath(t):
 
 
 def t_OPatr(t):
-    r'\+=|-=|\*=|\\=|='
+    r'\+=|-=|\*=|\\='
+    return t
+
+def t_OPatr_simples(t):
+    r'\='
     return t
 
 
@@ -153,7 +158,7 @@ def t_OPlog(t):
 
 
 def t_texto(t):
-    r'"(.{1,144})"'
+    r'"(.{1,144})"|\'(.{1,144})\''
     return t
 
 

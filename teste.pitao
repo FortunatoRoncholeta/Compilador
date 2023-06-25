@@ -1,3 +1,7 @@
+IFSULDEMINAS;
+INICIO;
+COMPILADORES; 
+
 FUNCAO _principal()
 {
     INTEIRO _valor_n;
@@ -12,11 +16,9 @@ FUNCAO _principal()
     TEXTO _op_usuario; 
     TEXTO _texto; 
     _texto = "Escolha uma Opcao: 1 Soma Pares 2 Multiplica Impar 3 Sair";
-    IMPRIMIR(_texto)
-    LER(_op_usuario);
+    _op_usuario = LER(_texto);
     _texto = "Digite um valor de 0 a 10"
-    IMPRIMIR(_texto);
-    LER(_valor_n);
+    _valor_n = LER(_texto);
     SE(_op_usuario == _op_soma){
         ENQUANTO(_valor_n <= 10){
             SE(_valor_n % 2 == 0){
@@ -27,7 +29,7 @@ FUNCAO _principal()
     }
     SENAO_SE(_op_usuario == _op_multiplica){
         ENQUANTO(_valor_n<=10){            
-    	    SENAO_SE(_valor_n % 2 == 1){
+    	    SE(_valor_n % 2 == 1){
                 _multiplica_impares *= _valor_n;
                 _qtd_impar += 1;
             }
@@ -43,3 +45,7 @@ FUNCAO _principal()
     IMPRIMIR('Quantos impares foram lidos:', _qtd_impar);
     RETORNA;
 };
+
+_principal()
+
+FIM;

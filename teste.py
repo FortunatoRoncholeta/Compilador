@@ -1,2 +1,3 @@
-teste = []
-print(teste.pop())
+teste = [1, 2]
+teste.clear()
+print(teste)
