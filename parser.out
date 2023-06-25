@@ -27,7 +27,6 @@ Unused terminals:
     aspas
     aspas_simples
     caracter_invisivel
-    comentario_uma_linha
     dois_pontos
     fecha_chave
     fecha_colchete
@@ -36,6 +35,7 @@ Unused terminals:
     ignore
     inteiro
     negacao
+    nova_linha
     numero_errado
     ponto
     texto
@@ -49,23 +49,21 @@ Grammar
 Rule 0     S' -> statements
 Rule 1     statements -> statements statement
 Rule 2     statements -> statement
-Rule 3     statement -> IFSULDEMINAS ponto_virgula
-Rule 4     statement -> INICIO ponto_virgula
-Rule 5     statement -> COMPILADORES ponto_virgula
-Rule 6     statement -> FIM ponto_virgula
+Rule 3     statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
+Rule 4     statement -> comentario_uma_linha
 
 Terminals, with rules where they appear
 
 CASO_FOR             : 
-COMPILADORES         : 5
+COMPILADORES         : 3
 ENQUANTO             : 
 FACA                 : 
-FIM                  : 6
+FIM                  : 3
 FLUTUANTE            : 
 FUNCAO               : 
 IFSULDEMINAS         : 3
 IMPRIMIR             : 
-INICIO               : 4
+INICIO               : 3
 LER                  : 
 OPatr                : 
 OPcomp               : 
@@ -85,7 +83,7 @@ abre_parentese       :
 aspas                : 
 aspas_simples        : 
 caracter_invisivel   : 
-comentario_uma_linha : 
+comentario_uma_linha : 4
 dois_pontos          : 
 error                : 
 fecha_chave          : 
@@ -95,9 +93,10 @@ flutuante            :
 ignore               : 
 inteiro              : 
 negacao              : 
+nova_linha           : 
 numero_errado        : 
 ponto                : 
-ponto_virgula        : 3 4 5 6
+ponto_virgula        : 3 3 3 3
 texto                : 
 texto_errado         : 
 variavel             : 
@@ -107,7 +106,7 @@ virgula              :
 Nonterminals, with rules where they appear
 
 statement            : 1 2
-statements           : 1 0
+statements           : 1 3 0
 
 Parsing method: LALR
 
@@ -116,15 +115,11 @@ state 0
     (0) S' -> . statements
     (1) statements -> . statements statement
     (2) statements -> . statement
-    (3) statement -> . IFSULDEMINAS ponto_virgula
-    (4) statement -> . INICIO ponto_virgula
-    (5) statement -> . COMPILADORES ponto_virgula
-    (6) statement -> . FIM ponto_virgula
+    (3) statement -> . IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
+    (4) statement -> . comentario_uma_linha
 
     IFSULDEMINAS    shift and go to state 3
-    INICIO          shift and go to state 4
-    COMPILADORES    shift and go to state 5
-    FIM             shift and go to state 6
+    comentario_uma_linha shift and go to state 4
 
     statements                     shift and go to state 1
     statement                      shift and go to state 2
@@ -133,108 +128,119 @@ state 1
 
     (0) S' -> statements .
     (1) statements -> statements . statement
-    (3) statement -> . IFSULDEMINAS ponto_virgula
-    (4) statement -> . INICIO ponto_virgula
-    (5) statement -> . COMPILADORES ponto_virgula
-    (6) statement -> . FIM ponto_virgula
+    (3) statement -> . IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
+    (4) statement -> . comentario_uma_linha
 
     IFSULDEMINAS    shift and go to state 3
-    INICIO          shift and go to state 4
-    COMPILADORES    shift and go to state 5
-    FIM             shift and go to state 6
+    comentario_uma_linha shift and go to state 4
 
-    statement                      shift and go to state 7
+    statement                      shift and go to state 5
 
 state 2
 
     (2) statements -> statement .
 
     IFSULDEMINAS    reduce using rule 2 (statements -> statement .)
-    INICIO          reduce using rule 2 (statements -> statement .)
-    COMPILADORES    reduce using rule 2 (statements -> statement .)
-    FIM             reduce using rule 2 (statements -> statement .)
+    comentario_uma_linha reduce using rule 2 (statements -> statement .)
     $end            reduce using rule 2 (statements -> statement .)
+    FIM             reduce using rule 2 (statements -> statement .)
 
 
 state 3
 
-    (3) statement -> IFSULDEMINAS . ponto_virgula
+    (3) statement -> IFSULDEMINAS . ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
 
-    ponto_virgula   shift and go to state 8
+    ponto_virgula   shift and go to state 6
 
 
 state 4
 
-    (4) statement -> INICIO . ponto_virgula
+    (4) statement -> comentario_uma_linha .
 
-    ponto_virgula   shift and go to state 9
+    IFSULDEMINAS    reduce using rule 4 (statement -> comentario_uma_linha .)
+    comentario_uma_linha reduce using rule 4 (statement -> comentario_uma_linha .)
+    $end            reduce using rule 4 (statement -> comentario_uma_linha .)
+    FIM             reduce using rule 4 (statement -> comentario_uma_linha .)
 
 
 state 5
 
-    (5) statement -> COMPILADORES . ponto_virgula
+    (1) statements -> statements statement .
 
-    ponto_virgula   shift and go to state 10
+    IFSULDEMINAS    reduce using rule 1 (statements -> statements statement .)
+    comentario_uma_linha reduce using rule 1 (statements -> statements statement .)
+    $end            reduce using rule 1 (statements -> statements statement .)
+    FIM             reduce using rule 1 (statements -> statements statement .)
 
 
 state 6
 
-    (6) statement -> FIM . ponto_virgula
+    (3) statement -> IFSULDEMINAS ponto_virgula . INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
 
-    ponto_virgula   shift and go to state 11
+    INICIO          shift and go to state 7
 
 
 state 7
 
-    (1) statements -> statements statement .
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO . ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
 
-    IFSULDEMINAS    reduce using rule 1 (statements -> statements statement .)
-    INICIO          reduce using rule 1 (statements -> statements statement .)
-    COMPILADORES    reduce using rule 1 (statements -> statements statement .)
-    FIM             reduce using rule 1 (statements -> statements statement .)
-    $end            reduce using rule 1 (statements -> statements statement .)
+    ponto_virgula   shift and go to state 8
 
 
 state 8
 
-    (3) statement -> IFSULDEMINAS ponto_virgula .
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula . COMPILADORES ponto_virgula statements FIM ponto_virgula
 
-    IFSULDEMINAS    reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula .)
-    INICIO          reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula .)
-    COMPILADORES    reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula .)
-    FIM             reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula .)
-    $end            reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula .)
+    COMPILADORES    shift and go to state 9
 
 
 state 9
 
-    (4) statement -> INICIO ponto_virgula .
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES . ponto_virgula statements FIM ponto_virgula
 
-    IFSULDEMINAS    reduce using rule 4 (statement -> INICIO ponto_virgula .)
-    INICIO          reduce using rule 4 (statement -> INICIO ponto_virgula .)
-    COMPILADORES    reduce using rule 4 (statement -> INICIO ponto_virgula .)
-    FIM             reduce using rule 4 (statement -> INICIO ponto_virgula .)
-    $end            reduce using rule 4 (statement -> INICIO ponto_virgula .)
+    ponto_virgula   shift and go to state 10
 
 
 state 10
 
-    (5) statement -> COMPILADORES ponto_virgula .
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula . statements FIM ponto_virgula
+    (1) statements -> . statements statement
+    (2) statements -> . statement
+    (3) statement -> . IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
+    (4) statement -> . comentario_uma_linha
 
-    IFSULDEMINAS    reduce using rule 5 (statement -> COMPILADORES ponto_virgula .)
-    INICIO          reduce using rule 5 (statement -> COMPILADORES ponto_virgula .)
-    COMPILADORES    reduce using rule 5 (statement -> COMPILADORES ponto_virgula .)
-    FIM             reduce using rule 5 (statement -> COMPILADORES ponto_virgula .)
-    $end            reduce using rule 5 (statement -> COMPILADORES ponto_virgula .)
+    IFSULDEMINAS    shift and go to state 3
+    comentario_uma_linha shift and go to state 4
 
+    statements                     shift and go to state 11
+    statement                      shift and go to state 2
 
 state 11
 
-    (6) statement -> FIM ponto_virgula .
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements . FIM ponto_virgula
+    (1) statements -> statements . statement
+    (3) statement -> . IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
+    (4) statement -> . comentario_uma_linha
 
-    IFSULDEMINAS    reduce using rule 6 (statement -> FIM ponto_virgula .)
-    INICIO          reduce using rule 6 (statement -> FIM ponto_virgula .)
-    COMPILADORES    reduce using rule 6 (statement -> FIM ponto_virgula .)
-    FIM             reduce using rule 6 (statement -> FIM ponto_virgula .)
-    $end            reduce using rule 6 (statement -> FIM ponto_virgula .)
+    FIM             shift and go to state 12
+    IFSULDEMINAS    shift and go to state 3
+    comentario_uma_linha shift and go to state 4
+
+    statement                      shift and go to state 5
+
+state 12
+
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM . ponto_virgula
+
+    ponto_virgula   shift and go to state 13
+
+
+state 13
+
+    (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .
+
+    IFSULDEMINAS    reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .)
+    comentario_uma_linha reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .)
+    $end            reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .)
+    FIM             reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .)
 

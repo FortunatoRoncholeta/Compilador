@@ -72,7 +72,8 @@ tokens = [
     'variavel_errada',
     'numero_errado',
     'texto_errado',
-    'caracter_invisivel'
+    'caracter_invisivel',
+    'nova_linha'
 
 
 
@@ -124,7 +125,7 @@ t_fecha_chave = r'\}'
 
 # comentario
 
-t_comentario_uma_linha = r'\^[a-zA-Z-0-9]+'
+t_comentario_uma_linha = r'\#.*'
 
 # t_comentario_n_linha = r'#\*(.|\n)*?\*#'
 

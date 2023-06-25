@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'CASO_FOR COMPILADORES ENQUANTO FACA FIM FLUTUANTE FUNCAO IFSULDEMINAS IMPRIMIR INICIO LER OPatr OPcomp OPlog OPmath PARA RETORNA SAIR SE SENAO SENAO_SE TEXTO TINTEIRO abre_chave abre_colchete abre_parentese aspas aspas_simples caracter_invisivel comentario_uma_linha dois_pontos fecha_chave fecha_colchete fecha_parentese flutuante ignore inteiro negacao numero_errado ponto ponto_virgula texto texto_errado variavel variavel_errada virgula\n    statements : statements statement\n    \n    statements : statement\n    \n    statement : IFSULDEMINAS ponto_virgula\n    \n    statement : INICIO ponto_virgula\n    \n    statement : COMPILADORES ponto_virgula\n    \n    statement : FIM ponto_virgula\n    '
+_lr_signature = 'CASO_FOR COMPILADORES ENQUANTO FACA FIM FLUTUANTE FUNCAO IFSULDEMINAS IMPRIMIR INICIO LER OPatr OPcomp OPlog OPmath PARA RETORNA SAIR SE SENAO SENAO_SE TEXTO TINTEIRO abre_chave abre_colchete abre_parentese aspas aspas_simples caracter_invisivel comentario_uma_linha dois_pontos fecha_chave fecha_colchete fecha_parentese flutuante ignore inteiro negacao nova_linha numero_errado ponto ponto_virgula texto texto_errado variavel variavel_errada virgula\n    statements : statements statement\n    \n    statements : statement\n    \n    statement : IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula\n    \n    statement : comentario_uma_linha\n    '
     
-_lr_action_items = {'IFSULDEMINAS':([0,1,2,7,8,9,10,11,],[3,3,-2,-1,-3,-4,-5,-6,]),'INICIO':([0,1,2,7,8,9,10,11,],[4,4,-2,-1,-3,-4,-5,-6,]),'COMPILADORES':([0,1,2,7,8,9,10,11,],[5,5,-2,-1,-3,-4,-5,-6,]),'FIM':([0,1,2,7,8,9,10,11,],[6,6,-2,-1,-3,-4,-5,-6,]),'$end':([1,2,7,8,9,10,11,],[0,-2,-1,-3,-4,-5,-6,]),'ponto_virgula':([3,4,5,6,],[8,9,10,11,]),}
+_lr_action_items = {'IFSULDEMINAS':([0,1,2,4,5,10,11,13,],[3,3,-2,-4,-1,3,3,-3,]),'comentario_uma_linha':([0,1,2,4,5,10,11,13,],[4,4,-2,-4,-1,4,4,-3,]),'$end':([1,2,4,5,13,],[0,-2,-4,-1,-3,]),'FIM':([2,4,5,11,13,],[-2,-4,-1,12,-3,]),'ponto_virgula':([3,7,9,12,],[6,8,10,13,]),'INICIO':([6,],[7,]),'COMPILADORES':([8,],[9,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statements':([0,],[1,]),'statement':([0,1,],[2,7,]),}
+_lr_goto_items = {'statements':([0,10,],[1,11,]),'statement':([0,1,10,11,],[2,5,2,5,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -29,8 +29,6 @@ _lr_productions = [
   ("S' -> statements","S'",1,None,None,None),
   ('statements -> statements statement','statements',2,'p_statements_multiple','sintatico.py',22),
   ('statements -> statement','statements',1,'p_statements_single','sintatico.py',27),
-  ('statement -> IFSULDEMINAS ponto_virgula','statement',2,'p_statement_ifsuldeminas','sintatico.py',33),
-  ('statement -> INICIO ponto_virgula','statement',2,'p_statement_inicio','sintatico.py',38),
-  ('statement -> COMPILADORES ponto_virgula','statement',2,'p_statement_compiladores','sintatico.py',43),
-  ('statement -> FIM ponto_virgula','statement',2,'p_statement_fim','sintatico.py',48),
+  ('statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula','statement',9,'p_statement_codigo','sintatico.py',34),
+  ('statement -> comentario_uma_linha','statement',1,'p_statement_comentario_uma_linha','sintatico.py',39),
 ]

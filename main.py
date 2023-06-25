@@ -116,7 +116,7 @@ class Application():
                     pilha_chaves.pop()
 
             if tok.type in ('texto_errado',
-                            'variavel_errado',
+                            'variavel_errada',
                             'numero_errado'):
                 t = tok.type
                 t = t[:t.find('_errado')]
@@ -158,11 +158,9 @@ class Application():
             parser.parse(data)
             qtderrossintaticos = len(errossintaticos)
             if qtderrossintaticos == 0:
-                print('passou "qtderrossintaticos == 0"')
                 self.saida.insert('', tk.END, values=[
                                   "Análise Sintática Concluída sem Erros"])
             else:
-                print('passou "qtderrossintaticos == 0"')
                 self.saida.insert('', tk.END, values=["Erro Sintático"])
         else:
             self.saida.insert('', tk.END, values=["Erro Léxico"])
@@ -284,7 +282,6 @@ class Application():
                 "RETORNA", "RETORNA", "RETORNA", "Palavra Reservada RETORNA"))
             newWindow.insert("", 10, text="", values=(
                 "SE", "SE", "SE", "Palavra Reservada SE"))
-
             newWindow.insert("", 11, text="", values=(
                 "SENAO", "SENAO", "SENAO", "Palavra Reservada SENAO"))
             newWindow.insert("", 12, text="", values=(
@@ -299,17 +296,17 @@ class Application():
                 "FUNCAO", "FUNCAO", "FUNCAO", "Palavra Reservada FUNCAO"))
             newWindow.insert("", 17, text="", values=(
                 "CASO_FOR", "CASO_FOR", "CASO_FOR", "Palavra Reservada CASO_FOR"))
-            newWindow.insert("", 18, text="", values=(
-                "INTEIRO", "1,2,3,4,5,", "INTEIRO", "Palavra Reservada INTEIRO"))
-            newWindow.insert("", 19, text="", values=(
-                "FLUTUANTE", "1.2,2.3,3.4,4.5,5.6,", "FLUTUANTE", "Palavra Reservada FLUTUANTE"))
-            newWindow.insert("", 20, text="", values=(
-                "TEXTO", " 'exemplo' ", "TEXTO", "Palavra Reservada TEXTO"))
             newWindow.insert("", 21, text="", values=(
                 "SAIR", "SAIR", "SAIR", "Palavra Reservada SAIR"))
+            newWindow.insert("", 18, text="", values=(
+                "INTEIRO", "INTEIRO", "INTEIRO", "Palavra Reservada INTEIRO"))
+            newWindow.insert("", 19, text="", values=(
+                "FLUTUANTE", "FLUTUANTE", "FLUTUANTE", "Palavra Reservada FLUTUANTE"))
+            newWindow.insert("", 20, text="", values=(
+                "TEXTO", " 'exemplo' ", "TEXTO", "Palavra Reservada TEXTO"))
+            
             newWindow.insert("", 22, text="", values=(
                 "OPmath", "+,-,*,/,%", "[+\-*|/%]", "Operador Matemático "))
-
             newWindow.insert("", 27, text="", values=(
                 "abre_parenteses", "(", "(", "Operador de Prioridade abre parenteses"))
             newWindow.insert("", 28, text="", values=(
@@ -322,7 +319,6 @@ class Application():
                 "abre_colchetes", "[", "[", "Operador de Prioridade abre colchetes"))
             newWindow.insert("", 32, text="", values=(
                 "fecha_colchetes", "]", "]", "Operador de Prioridade fecha colchetes"))
-
             newWindow.insert("", 33, text="", values=(
                 "OPatr", "=,+=,-=,*=,/=", "[+\-*|/%]?=|[+\-*|/]=", "Operador atribuicao"))
             newWindow.insert("", 34, text="", values=(
@@ -337,11 +333,13 @@ class Application():
                 "flutuante", "0.009...9.9999", "0.00|9.999", "Dígito Númerico Double"))
             newWindow.insert("", 43, text="", values=(
                 "texto", "a,b,c...x,y,z", "a|b|c...x|y|z", "Char"))
+
             newWindow.insert("", 44, text="", values=(
-                "variavel", "char(char,inteiro)*", "[char]{1}[char|inteiro]{*}", "Variável Criada"))
+                "variavel", "(_)(letra)*(numero/letra)", "[char]{1}[char|inteiro]{*}", "Variável Criada"))
+            newWindow.insert("", 44, text="", values=(
+                "variavel_errada", "valor ,2salario", "^[^_A-Za-z0-9]", "Variável Criada"))
             newWindow.insert("", 45, text="", values=(
                 "aspas_simples",  "'", "'", "Operação de Impressão aspa simples"))
-
             newWindow.insert("", 46, text="", values=(
                 "virgula", ",", ",", "Operador de Execução Vírgula"))
             newWindow.insert("", 47, text="", values=(
@@ -350,13 +348,10 @@ class Application():
                 "dois_pontos", ":", ":", "Operador de Execução dois pontos"))
             newWindow.insert("", 49, text="", values=(
                 "ponto", ".", ".", "Operador de Execução ponto"))
-
             newWindow.insert("", 50, text="", values=(
                 "aspas", '"', '"', "Operação de Impressão aspa duplas"))
-
             newWindow.insert("", 51, text="", values=(
                 "comentario_uma_linha", "#", "#", "Operador de Comentário de uma linha"))
-
             newWindow.insert("", 52, text="", values=(
                 "negacao", "~", "~", "Operador de Atribuição negação"))
 

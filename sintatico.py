@@ -1,5 +1,3 @@
-from ply import yacc
-
 
     # DICAS PARA O ANALISADOR LÉXICO 29-05-2023
 
@@ -28,29 +26,18 @@ def p_statements_single(p):
     '''
 
 # STATEMENT's PITÃO
-def p_statement_ifsuldeminas(p):
+# IFSULDEMINAS, INICIO, COMPILADORES, FIM
+def p_statement_codigo(p):
     '''
-    statement : IFSULDEMINAS ponto_virgula
-    '''
-
-def p_statement_inicio(p):
-    '''
-    statement : INICIO ponto_virgula
+    statement : IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
     '''
 
-def p_statement_compiladores(p):
+def p_statement_comentario_uma_linha(p):
     '''
-    statement : COMPILADORES ponto_virgula
-    '''
-
-def p_statement_fim(p):
-    '''
-    statement : FIM ponto_virgula
+    statement : comentario_uma_linha
     '''
 
 errossintaticos = []
 def p_error(p):
     errossintaticos.append(p)
     print("ERRO: ",p)
-
-# parser = yacc.yacc()

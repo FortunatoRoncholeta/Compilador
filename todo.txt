@@ -1,2 +1,6 @@
-comentario
-numero grande(maior que 15 caracter)
+comentario - verficar
+numero grande(maior que 15 caracter) - verificar
+
+colocar numero da linha no erro sintatico 
+palavras reservadas na ordem certa (IFSULDEMINAS, INICIO, COMPILADORES, FIM).
+controlar ordem certa das palavras.
