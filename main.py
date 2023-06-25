@@ -1,6 +1,6 @@
 from turtle import color
 import ply.lex as lex
-import ply as yacc
+from ply import yacc
 from lexico import *
 from sintatico import *
 
