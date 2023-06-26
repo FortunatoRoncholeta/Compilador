@@ -13,8 +13,9 @@
     #     - ANTES:    <COMANDOIF> := 'if' AP EXPR FP BLOCO | 'if' AP EXPR FP BLOCO 'else' BLOCO.
     #     - DEPOIS:   <COMANDOIF> :=  if' AP EXPR FP BLOCO ( 'else' BLOCO | {Vazio})
 
+saidas_sintatica = []
 
- ## STATEMENT's OBRIGATÓRIAS 
+## STATEMENT's OBRIGATÓRIAS 
 def p_statements_multiple(p):
     '''
     statements : statements statement
@@ -25,29 +26,6 @@ def p_statements_single(p):
     statements : statement
     '''
 
-def p_statements_inteiro(p):
-    '''
-    statements : inteiro
-               | inteiro t_OPmath inteiro
-               | variavel t_OPmath inteiro
-               | inteiro t_OPmath variavel
-    '''
-
-def p_statements_flutuante(p):
-    '''
-    statements : flutuante
-               | flutuante t_OPmath flutuante
-               | variavel t_OPmath flutuante
-               | flutuante t_OPmath variavel
-               | inteiro t_OPmath flutuante
-               | flutuante t_OPmath inteiro
-    '''
-
-# def p_statement_vazio(p):
-#     '''
-#     statement :
-#     '''
-# STATEMENT's PITÃO
 # IFSULDEMINAS, INICIO, COMPILADORES, FIM
 def p_statement_codigo(p):
     '''
@@ -85,6 +63,24 @@ def p_statement_atribuicao_variavel(p):
               | variavel OPatr_simples LER abre_parentese fecha_parentese ponto_virgula
     '''
 
+def p_statement_inteiro(p):
+    '''
+    statement : inteiro
+               | inteiro OPmath inteiro
+               | variavel OPmath inteiro
+               | inteiro OPmath variavel
+    '''
+
+def p_statement_flutuante(p):
+    '''
+    statement : flutuante
+               | flutuante OPmath flutuante
+               | variavel OPmath flutuante
+               | flutuante OPmath variavel
+               | inteiro OPmath flutuante
+               | flutuante OPmath inteiro
+    '''
+
 def p_statement_IMPRIMIR(p):
     '''
     statement : IMPRIMIR abre_parentese variavel fecha_parentese ponto_virgula
@@ -94,7 +90,7 @@ def p_statement_IMPRIMIR(p):
 
 def p_statement_comparacao(p):
     '''
-    statement : variavel OPcomp variavel
+    comparacao : variavel OPcomp variavel
               | variavel OPcomp inteiro
               | variavel OPcomp flutuante
               | variavel OPcomp texto
@@ -105,18 +101,10 @@ def p_statement_comparacao(p):
               | inteiro OPcomp inteiro
               | flutuante OPcomp flutuante
     '''
- 
-def p_statement_SE(p): 
-    '''
-    statement : SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
-              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
-              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
-              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
-    '''  
 
-def p_statement_ENQUANTO(p): 
+def p_statement_comparacao_aninhada(p):
     '''
-    statement : ENQUANTO abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
+    comparacao : comparacao OPlog comparacao
     '''
 
 def p_statement_declara_funcao(p): 
@@ -142,7 +130,24 @@ def p_statement_RETORNA(p):
               | RETORNA texto ponto_virgula
     '''   
 
+def p_statement_SE(p): 
+    '''
+    statement : SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
+              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
+              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
+              | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
+    '''  
+
+def p_statement_ENQUANTO(p): 
+    '''
+    statement : ENQUANTO abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
+    '''
+
 errossintaticos = []
 def p_error(p):
-    errossintaticos.append(p)
-    print("ERRO: ",p)
+
+    errossintaticos.append(["Erro Sintático. " +
+                         "Linha: " + str(p.lineno) + " - " +
+                         #   "Coluna: " + str(c) + " - " +
+                         "Gramática não reconhecida" + str(p.value)
+                         ])

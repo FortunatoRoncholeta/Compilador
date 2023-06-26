@@ -1,6 +1,6 @@
 from turtle import color
-import ply.lex as lex
-from ply import yacc
+from ply.lex import lex, LexToken
+from ply.yacc import yacc
 from lexico import *
 from sintatico import *
 
@@ -32,6 +32,7 @@ class Application():
             self.saida.delete(i)
         saidas.clear()
         erroslexicos.clear()
+        errossintaticos.clear()
         global erros
         erros = 0
         self.frame_2.update()
@@ -72,7 +73,7 @@ class Application():
         lexer = lex.lex()  # Cria analisador lexico
         lexer.input(data)
 
-        parser = yacc.yacc()
+        parser = yacc()
 
         # Tokenizar a entrada para passar para o analisador léxico
         pilha_parenteses = []
@@ -173,6 +174,10 @@ class Application():
         saida = open('saida.txt', 'w')
 
         for retorno in saidas:
+            self.saida.insert('', tk.END, values=retorno)
+            saida.write(str(retorno[0]) + '\n')
+
+        for retorno in errossintaticos:
             self.saida.insert('', tk.END, values=retorno)
             saida.write(str(retorno[0]) + '\n')
 

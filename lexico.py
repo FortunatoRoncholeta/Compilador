@@ -219,7 +219,7 @@ def add_lista_saida(t, c, notificacao):
         notificacao = 'Aviso: ' + str(notificacao)
 
     saidas.append(["Linha: " + str(t.lineno) + " - " +
-                  "Coluna: " + str(c) + " - " +
+                 # "Coluna: " + str(t.lexpos) + " - " +
                    "Token<" + str(t.type) + "," + str(t.value) + ">" +
                    str(notificacao)
                    ])

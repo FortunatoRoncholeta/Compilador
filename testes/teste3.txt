@@ -1,0 +1,11 @@
+IFSULDEMINAS;
+INICIO;
+COMPILADORES;
+ 
+TEXTO _op_usuario = "+";
+TEXTO _op_soma = "+";
+SE(_op_usuario == _op_soma){
+   IMPRIMIR("A");
+}
+
+FIM;

@@ -1,3 +1,6 @@
+IFSULDEMINAS;
+INICIO;
+COMPILADORES; 
 FUNCAO _principal()
 {
     INTEIRO _valor_n;
@@ -23,11 +26,14 @@ FUNCAO _principal()
 		_soma_pares+=_valor_n;
            _qtd_par+=1;
         }
+      }
+    }
     SENAO_SE(_op_usuario == _op_multiplica){
-       ENQUANTO(_valor_n<=10){            
-    	   SENAO_SE(_valor_n % 2 == 1){
-            _multiplica_impares*=_valor_n;
-            _qtd_impar+=1;
+        ENQUANTO(_valor_n<=10){            
+            SENAO_SE(_valor_n % 2 == 1){
+                _multiplica_impares*=_valor_n;
+                _qtd_impar+=1;
+            }
         }
     }
     SENAO_SE(_op_usuario == _op_sair){
@@ -39,4 +45,7 @@ FUNCAO _principal()
     IMPRIMIR('Quantos pares foram lidos:', _qtd_par);
     IMPRIMIR('Quantos impares foram lidos:', _qtd_impar);
     RETORNA;
-};
+}
+
+FIM;
+
