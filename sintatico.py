@@ -130,7 +130,7 @@ def p_statement_RETORNA(p):
               | RETORNA texto ponto_virgula
     '''   
 
-def p_statement_condicional(p): 
+def p_statement_condicionais(p): 
     '''
     statement : SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
               | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
