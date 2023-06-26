@@ -147,7 +147,7 @@ errossintaticos = []
 def p_error(p):
 
     errossintaticos.append(["Erro Sintático. " +
-                         "Linha: " + str(p.lineno) + " - " +
-                         #   "Coluna: " + str(c) + " - " +
-                         "Gramática não reconhecida" + str(p.value)
+                         #"Linha: " + str(p.lineno) + " - " +
+                         #"Coluna: " + str(c) + " - " +
+                         "Gramática não reconhecida proximo ao token <" + str(p.value) + ">"
                          ])

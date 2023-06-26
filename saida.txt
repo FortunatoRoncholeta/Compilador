@@ -1,6 +1,7 @@
-Linha: 1 - Coluna: 0 - Token<IFSULDEMINAS,IFSULDEMINAS>Aviso: Palavra reservada.
-Linha: 1 - Coluna: 12 - Token<ponto_virgula,;>
-Linha: 3 - Coluna: 18 - Token<COMPILADORES,COMPILADORES>Aviso: Palavra reservada.
-Linha: 3 - Coluna: 30 - Token<ponto_virgula,;>
-Linha: 4 - Coluna: 33 - Token<FIM,FIM>Aviso: Palavra reservada.
-Linha: 4 - Coluna: 36 - Token<ponto_virgula,;>
+Linha: 1 - Token<IFSULDEMINAS,IFSULDEMINAS>Aviso: Palavra reservada.
+Linha: 1 - Token<ponto_virgula,;>
+Linha: 2 - Token<INICIO,INICIO>Aviso: Palavra reservada.
+Linha: 2 - Token<ponto_virgula,;>
+Linha: 4 - Token<FIM,FIM>Aviso: Palavra reservada.
+Linha: 4 - Token<ponto_virgula,;>
+Erro Sintático. Gramática não reconhecida proximo ao token <FIM>
