@@ -68,7 +68,7 @@ Rule 42    comparacao -> texto OPcomp variavel
 Rule 43    comparacao -> texto OPcomp texto
 Rule 44    comparacao -> inteiro OPcomp inteiro
 Rule 45    comparacao -> flutuante OPcomp flutuante
-Rule 46    comparacao -> comparacao OPlog comparacao
+Rule 46    comparacao_aninhada -> comparacao OPlog comparacao
 Rule 47    statement -> FUNCAO abre_parentese fecha_parentese abre_chave statements fecha_chave
 Rule 48    statement -> variavel abre_parentese fecha_parentese
 Rule 49    statement -> SAIR ponto_virgula
@@ -136,6 +136,7 @@ virgula              : 35
 Nonterminals, with rules where they appear
 
 comparacao           : 46 46 54 55 56 56 57 57
+comparacao_aninhada  : 
 statement            : 1 2
 statements           : 1 3 47 54 55 55 56 56 57 57 57 0
 
@@ -691,7 +692,6 @@ state 34
     (43) comparacao -> . texto OPcomp texto
     (44) comparacao -> . inteiro OPcomp inteiro
     (45) comparacao -> . flutuante OPcomp flutuante
-    (46) comparacao -> . comparacao OPlog comparacao
 
     variavel        shift and go to state 65
     inteiro         shift and go to state 66
@@ -1143,10 +1143,8 @@ state 64
     (55) statement -> SE abre_parentese comparacao . fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
     (56) statement -> SE abre_parentese comparacao . fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao . fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
-    (46) comparacao -> comparacao . OPlog comparacao
 
     fecha_parentese shift and go to state 86
-    OPlog           shift and go to state 87
 
 
 state 65
@@ -1156,7 +1154,7 @@ state 65
     (38) comparacao -> variavel . OPcomp flutuante
     (39) comparacao -> variavel . OPcomp texto
 
-    OPcomp          shift and go to state 88
+    OPcomp          shift and go to state 87
 
 
 state 66
@@ -1164,7 +1162,7 @@ state 66
     (40) comparacao -> inteiro . OPcomp variavel
     (44) comparacao -> inteiro . OPcomp inteiro
 
-    OPcomp          shift and go to state 89
+    OPcomp          shift and go to state 88
 
 
 state 67
@@ -1172,7 +1170,7 @@ state 67
     (41) comparacao -> flutuante . OPcomp variavel
     (45) comparacao -> flutuante . OPcomp flutuante
 
-    OPcomp          shift and go to state 90
+    OPcomp          shift and go to state 89
 
 
 state 68
@@ -1180,7 +1178,7 @@ state 68
     (42) comparacao -> texto . OPcomp variavel
     (43) comparacao -> texto . OPcomp texto
 
-    OPcomp          shift and go to state 91
+    OPcomp          shift and go to state 90
 
 
 state 69
@@ -1188,21 +1186,21 @@ state 69
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula . COMPILADORES ponto_virgula statements FIM ponto_virgula
     (4) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula . COMPILADORES ponto_virgula FIM ponto_virgula
 
-    COMPILADORES    shift and go to state 92
+    COMPILADORES    shift and go to state 91
 
 
 state 70
 
     (6) statement -> INTEIRO variavel OPatr_simples inteiro . ponto_virgula
 
-    ponto_virgula   shift and go to state 93
+    ponto_virgula   shift and go to state 92
 
 
 state 71
 
     (7) statement -> INTEIRO variavel OPatr_simples flutuante . ponto_virgula
 
-    ponto_virgula   shift and go to state 94
+    ponto_virgula   shift and go to state 93
 
 
 state 72
@@ -1277,9 +1275,9 @@ state 75
     (21) statement -> variavel OPatr_simples LER abre_parentese . variavel fecha_parentese ponto_virgula
     (22) statement -> variavel OPatr_simples LER abre_parentese . fecha_parentese ponto_virgula
 
-    texto           shift and go to state 96
-    variavel        shift and go to state 95
-    fecha_parentese shift and go to state 97
+    texto           shift and go to state 95
+    variavel        shift and go to state 94
+    fecha_parentese shift and go to state 96
 
 
 state 76
@@ -1352,42 +1350,42 @@ state 79
 
     (9) statement -> FLUTUANTE variavel OPatr_simples flutuante . ponto_virgula
 
-    ponto_virgula   shift and go to state 98
+    ponto_virgula   shift and go to state 97
 
 
 state 80
 
     (10) statement -> FLUTUANTE variavel OPatr_simples inteiro . ponto_virgula
 
-    ponto_virgula   shift and go to state 99
+    ponto_virgula   shift and go to state 98
 
 
 state 81
 
     (12) statement -> TEXTO variavel OPatr_simples texto . ponto_virgula
 
-    ponto_virgula   shift and go to state 100
+    ponto_virgula   shift and go to state 99
 
 
 state 82
 
     (33) statement -> IMPRIMIR abre_parentese variavel fecha_parentese . ponto_virgula
 
-    ponto_virgula   shift and go to state 101
+    ponto_virgula   shift and go to state 100
 
 
 state 83
 
     (34) statement -> IMPRIMIR abre_parentese texto fecha_parentese . ponto_virgula
 
-    ponto_virgula   shift and go to state 102
+    ponto_virgula   shift and go to state 101
 
 
 state 84
 
     (35) statement -> IMPRIMIR abre_parentese texto virgula . variavel fecha_parentese ponto_virgula
 
-    variavel        shift and go to state 103
+    variavel        shift and go to state 102
 
 
 state 85
@@ -1454,7 +1452,7 @@ state 85
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 104
+    statements                     shift and go to state 103
     statement                      shift and go to state 2
 
 state 86
@@ -1464,80 +1462,58 @@ state 86
     (56) statement -> SE abre_parentese comparacao fecha_parentese . abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese . abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    abre_chave      shift and go to state 105
+    abre_chave      shift and go to state 104
 
 
 state 87
-
-    (46) comparacao -> comparacao OPlog . comparacao
-    (36) comparacao -> . variavel OPcomp variavel
-    (37) comparacao -> . variavel OPcomp inteiro
-    (38) comparacao -> . variavel OPcomp flutuante
-    (39) comparacao -> . variavel OPcomp texto
-    (40) comparacao -> . inteiro OPcomp variavel
-    (41) comparacao -> . flutuante OPcomp variavel
-    (42) comparacao -> . texto OPcomp variavel
-    (43) comparacao -> . texto OPcomp texto
-    (44) comparacao -> . inteiro OPcomp inteiro
-    (45) comparacao -> . flutuante OPcomp flutuante
-    (46) comparacao -> . comparacao OPlog comparacao
-
-    variavel        shift and go to state 65
-    inteiro         shift and go to state 66
-    flutuante       shift and go to state 67
-    texto           shift and go to state 68
-
-    comparacao                     shift and go to state 106
-
-state 88
 
     (36) comparacao -> variavel OPcomp . variavel
     (37) comparacao -> variavel OPcomp . inteiro
     (38) comparacao -> variavel OPcomp . flutuante
     (39) comparacao -> variavel OPcomp . texto
 
-    variavel        shift and go to state 107
-    inteiro         shift and go to state 108
-    flutuante       shift and go to state 109
-    texto           shift and go to state 110
+    variavel        shift and go to state 105
+    inteiro         shift and go to state 106
+    flutuante       shift and go to state 107
+    texto           shift and go to state 108
 
 
-state 89
+state 88
 
     (40) comparacao -> inteiro OPcomp . variavel
     (44) comparacao -> inteiro OPcomp . inteiro
 
-    variavel        shift and go to state 112
-    inteiro         shift and go to state 111
+    variavel        shift and go to state 110
+    inteiro         shift and go to state 109
 
 
-state 90
+state 89
 
     (41) comparacao -> flutuante OPcomp . variavel
     (45) comparacao -> flutuante OPcomp . flutuante
 
-    variavel        shift and go to state 114
-    flutuante       shift and go to state 113
+    variavel        shift and go to state 112
+    flutuante       shift and go to state 111
 
 
-state 91
+state 90
 
     (42) comparacao -> texto OPcomp . variavel
     (43) comparacao -> texto OPcomp . texto
 
-    variavel        shift and go to state 116
-    texto           shift and go to state 115
+    variavel        shift and go to state 114
+    texto           shift and go to state 113
 
 
-state 92
+state 91
 
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES . ponto_virgula statements FIM ponto_virgula
     (4) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES . ponto_virgula FIM ponto_virgula
 
-    ponto_virgula   shift and go to state 117
+    ponto_virgula   shift and go to state 115
 
 
-state 93
+state 92
 
     (6) statement -> INTEIRO variavel OPatr_simples inteiro ponto_virgula .
 
@@ -1559,7 +1535,7 @@ state 93
     FIM             reduce using rule 6 (statement -> INTEIRO variavel OPatr_simples inteiro ponto_virgula .)
 
 
-state 94
+state 93
 
     (7) statement -> INTEIRO variavel OPatr_simples flutuante ponto_virgula .
 
@@ -1581,28 +1557,28 @@ state 94
     FIM             reduce using rule 7 (statement -> INTEIRO variavel OPatr_simples flutuante ponto_virgula .)
 
 
-state 95
+state 94
 
     (21) statement -> variavel OPatr_simples LER abre_parentese variavel . fecha_parentese ponto_virgula
 
-    fecha_parentese shift and go to state 118
+    fecha_parentese shift and go to state 116
+
+
+state 95
+
+    (20) statement -> variavel OPatr_simples LER abre_parentese texto . fecha_parentese ponto_virgula
+
+    fecha_parentese shift and go to state 117
 
 
 state 96
 
-    (20) statement -> variavel OPatr_simples LER abre_parentese texto . fecha_parentese ponto_virgula
+    (22) statement -> variavel OPatr_simples LER abre_parentese fecha_parentese . ponto_virgula
 
-    fecha_parentese shift and go to state 119
+    ponto_virgula   shift and go to state 118
 
 
 state 97
-
-    (22) statement -> variavel OPatr_simples LER abre_parentese fecha_parentese . ponto_virgula
-
-    ponto_virgula   shift and go to state 120
-
-
-state 98
 
     (9) statement -> FLUTUANTE variavel OPatr_simples flutuante ponto_virgula .
 
@@ -1624,7 +1600,7 @@ state 98
     FIM             reduce using rule 9 (statement -> FLUTUANTE variavel OPatr_simples flutuante ponto_virgula .)
 
 
-state 99
+state 98
 
     (10) statement -> FLUTUANTE variavel OPatr_simples inteiro ponto_virgula .
 
@@ -1646,7 +1622,7 @@ state 99
     FIM             reduce using rule 10 (statement -> FLUTUANTE variavel OPatr_simples inteiro ponto_virgula .)
 
 
-state 100
+state 99
 
     (12) statement -> TEXTO variavel OPatr_simples texto ponto_virgula .
 
@@ -1668,7 +1644,7 @@ state 100
     FIM             reduce using rule 12 (statement -> TEXTO variavel OPatr_simples texto ponto_virgula .)
 
 
-state 101
+state 100
 
     (33) statement -> IMPRIMIR abre_parentese variavel fecha_parentese ponto_virgula .
 
@@ -1690,7 +1666,7 @@ state 101
     FIM             reduce using rule 33 (statement -> IMPRIMIR abre_parentese variavel fecha_parentese ponto_virgula .)
 
 
-state 102
+state 101
 
     (34) statement -> IMPRIMIR abre_parentese texto fecha_parentese ponto_virgula .
 
@@ -1712,14 +1688,14 @@ state 102
     FIM             reduce using rule 34 (statement -> IMPRIMIR abre_parentese texto fecha_parentese ponto_virgula .)
 
 
-state 103
+state 102
 
     (35) statement -> IMPRIMIR abre_parentese texto virgula variavel . fecha_parentese ponto_virgula
 
-    fecha_parentese shift and go to state 121
+    fecha_parentese shift and go to state 119
 
 
-state 104
+state 103
 
     (47) statement -> FUNCAO abre_parentese fecha_parentese abre_chave statements . fecha_chave
     (1) statements -> statements . statement
@@ -1768,7 +1744,7 @@ state 104
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    fecha_chave     shift and go to state 122
+    fecha_chave     shift and go to state 120
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -1785,7 +1761,7 @@ state 104
 
     statement                      shift and go to state 16
 
-state 105
+state 104
 
     (54) statement -> SE abre_parentese comparacao fecha_parentese abre_chave . statements fecha_chave
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave . statements fecha_chave SENAO abre_chave statements fecha_chave
@@ -1852,102 +1828,80 @@ state 105
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 123
+    statements                     shift and go to state 121
     statement                      shift and go to state 2
 
-state 106
-
-    (46) comparacao -> comparacao OPlog comparacao .
-    (46) comparacao -> comparacao . OPlog comparacao
-
-  ! shift/reduce conflict for OPlog resolved as shift
-    fecha_parentese reduce using rule 46 (comparacao -> comparacao OPlog comparacao .)
-    OPlog           shift and go to state 87
-
-  ! OPlog           [ reduce using rule 46 (comparacao -> comparacao OPlog comparacao .) ]
-
-
-state 107
+state 105
 
     (36) comparacao -> variavel OPcomp variavel .
 
     fecha_parentese reduce using rule 36 (comparacao -> variavel OPcomp variavel .)
-    OPlog           reduce using rule 36 (comparacao -> variavel OPcomp variavel .)
 
 
-state 108
+state 106
 
     (37) comparacao -> variavel OPcomp inteiro .
 
     fecha_parentese reduce using rule 37 (comparacao -> variavel OPcomp inteiro .)
-    OPlog           reduce using rule 37 (comparacao -> variavel OPcomp inteiro .)
 
 
-state 109
+state 107
 
     (38) comparacao -> variavel OPcomp flutuante .
 
     fecha_parentese reduce using rule 38 (comparacao -> variavel OPcomp flutuante .)
-    OPlog           reduce using rule 38 (comparacao -> variavel OPcomp flutuante .)
 
 
-state 110
+state 108
 
     (39) comparacao -> variavel OPcomp texto .
 
     fecha_parentese reduce using rule 39 (comparacao -> variavel OPcomp texto .)
-    OPlog           reduce using rule 39 (comparacao -> variavel OPcomp texto .)
 
 
-state 111
+state 109
 
     (44) comparacao -> inteiro OPcomp inteiro .
 
     fecha_parentese reduce using rule 44 (comparacao -> inteiro OPcomp inteiro .)
-    OPlog           reduce using rule 44 (comparacao -> inteiro OPcomp inteiro .)
 
 
-state 112
+state 110
 
     (40) comparacao -> inteiro OPcomp variavel .
 
     fecha_parentese reduce using rule 40 (comparacao -> inteiro OPcomp variavel .)
-    OPlog           reduce using rule 40 (comparacao -> inteiro OPcomp variavel .)
 
 
-state 113
+state 111
 
     (45) comparacao -> flutuante OPcomp flutuante .
 
     fecha_parentese reduce using rule 45 (comparacao -> flutuante OPcomp flutuante .)
-    OPlog           reduce using rule 45 (comparacao -> flutuante OPcomp flutuante .)
 
 
-state 114
+state 112
 
     (41) comparacao -> flutuante OPcomp variavel .
 
     fecha_parentese reduce using rule 41 (comparacao -> flutuante OPcomp variavel .)
-    OPlog           reduce using rule 41 (comparacao -> flutuante OPcomp variavel .)
 
 
-state 115
+state 113
 
     (43) comparacao -> texto OPcomp texto .
 
     fecha_parentese reduce using rule 43 (comparacao -> texto OPcomp texto .)
-    OPlog           reduce using rule 43 (comparacao -> texto OPcomp texto .)
 
 
-state 116
+state 114
 
     (42) comparacao -> texto OPcomp variavel .
 
     fecha_parentese reduce using rule 42 (comparacao -> texto OPcomp variavel .)
-    OPlog           reduce using rule 42 (comparacao -> texto OPcomp variavel .)
 
 
-state 117
+state 115
 
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula . statements FIM ponto_virgula
     (4) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula . FIM ponto_virgula
@@ -1998,7 +1952,7 @@ state 117
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    FIM             shift and go to state 125
+    FIM             shift and go to state 123
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2013,24 +1967,24 @@ state 117
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 124
+    statements                     shift and go to state 122
     statement                      shift and go to state 2
 
-state 118
+state 116
 
     (21) statement -> variavel OPatr_simples LER abre_parentese variavel fecha_parentese . ponto_virgula
 
-    ponto_virgula   shift and go to state 126
+    ponto_virgula   shift and go to state 124
 
 
-state 119
+state 117
 
     (20) statement -> variavel OPatr_simples LER abre_parentese texto fecha_parentese . ponto_virgula
 
-    ponto_virgula   shift and go to state 127
+    ponto_virgula   shift and go to state 125
 
 
-state 120
+state 118
 
     (22) statement -> variavel OPatr_simples LER abre_parentese fecha_parentese ponto_virgula .
 
@@ -2052,14 +2006,14 @@ state 120
     FIM             reduce using rule 22 (statement -> variavel OPatr_simples LER abre_parentese fecha_parentese ponto_virgula .)
 
 
-state 121
+state 119
 
     (35) statement -> IMPRIMIR abre_parentese texto virgula variavel fecha_parentese . ponto_virgula
 
-    ponto_virgula   shift and go to state 128
+    ponto_virgula   shift and go to state 126
 
 
-state 122
+state 120
 
     (47) statement -> FUNCAO abre_parentese fecha_parentese abre_chave statements fecha_chave .
 
@@ -2081,7 +2035,7 @@ state 122
     FIM             reduce using rule 47 (statement -> FUNCAO abre_parentese fecha_parentese abre_chave statements fecha_chave .)
 
 
-state 123
+state 121
 
     (54) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements . fecha_chave
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements . fecha_chave SENAO abre_chave statements fecha_chave
@@ -2133,7 +2087,7 @@ state 123
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    fecha_chave     shift and go to state 129
+    fecha_chave     shift and go to state 127
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2150,7 +2104,7 @@ state 123
 
     statement                      shift and go to state 16
 
-state 124
+state 122
 
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements . FIM ponto_virgula
     (1) statements -> statements . statement
@@ -2199,7 +2153,7 @@ state 124
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    FIM             shift and go to state 130
+    FIM             shift and go to state 128
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2216,14 +2170,14 @@ state 124
 
     statement                      shift and go to state 16
 
-state 125
+state 123
 
     (4) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula FIM . ponto_virgula
 
-    ponto_virgula   shift and go to state 131
+    ponto_virgula   shift and go to state 129
 
 
-state 126
+state 124
 
     (21) statement -> variavel OPatr_simples LER abre_parentese variavel fecha_parentese ponto_virgula .
 
@@ -2245,7 +2199,7 @@ state 126
     FIM             reduce using rule 21 (statement -> variavel OPatr_simples LER abre_parentese variavel fecha_parentese ponto_virgula .)
 
 
-state 127
+state 125
 
     (20) statement -> variavel OPatr_simples LER abre_parentese texto fecha_parentese ponto_virgula .
 
@@ -2267,7 +2221,7 @@ state 127
     FIM             reduce using rule 20 (statement -> variavel OPatr_simples LER abre_parentese texto fecha_parentese ponto_virgula .)
 
 
-state 128
+state 126
 
     (35) statement -> IMPRIMIR abre_parentese texto virgula variavel fecha_parentese ponto_virgula .
 
@@ -2289,7 +2243,7 @@ state 128
     FIM             reduce using rule 35 (statement -> IMPRIMIR abre_parentese texto virgula variavel fecha_parentese ponto_virgula .)
 
 
-state 129
+state 127
 
     (54) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave . SENAO abre_chave statements fecha_chave
@@ -2312,18 +2266,18 @@ state 129
     $end            reduce using rule 54 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
     fecha_chave     reduce using rule 54 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
     FIM             reduce using rule 54 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
-    SENAO           shift and go to state 132
-    SENAO_SE        shift and go to state 133
+    SENAO           shift and go to state 130
+    SENAO_SE        shift and go to state 131
 
 
-state 130
+state 128
 
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM . ponto_virgula
 
-    ponto_virgula   shift and go to state 134
+    ponto_virgula   shift and go to state 132
 
 
-state 131
+state 129
 
     (4) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula FIM ponto_virgula .
 
@@ -2345,22 +2299,22 @@ state 131
     FIM             reduce using rule 4 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula FIM ponto_virgula .)
 
 
-state 132
+state 130
 
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO . abre_chave statements fecha_chave
 
-    abre_chave      shift and go to state 135
+    abre_chave      shift and go to state 133
 
 
-state 133
+state 131
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE . abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE . abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    abre_parentese  shift and go to state 136
+    abre_parentese  shift and go to state 134
 
 
-state 134
+state 132
 
     (3) statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .
 
@@ -2382,7 +2336,7 @@ state 134
     FIM             reduce using rule 3 (statement -> IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula .)
 
 
-state 135
+state 133
 
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave . statements fecha_chave
     (1) statements -> . statements statement
@@ -2446,10 +2400,10 @@ state 135
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 137
+    statements                     shift and go to state 135
     statement                      shift and go to state 2
 
-state 136
+state 134
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese . comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese . comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
@@ -2463,16 +2417,15 @@ state 136
     (43) comparacao -> . texto OPcomp texto
     (44) comparacao -> . inteiro OPcomp inteiro
     (45) comparacao -> . flutuante OPcomp flutuante
-    (46) comparacao -> . comparacao OPlog comparacao
 
     variavel        shift and go to state 65
     inteiro         shift and go to state 66
     flutuante       shift and go to state 67
     texto           shift and go to state 68
 
-    comparacao                     shift and go to state 138
+    comparacao                     shift and go to state 136
 
-state 137
+state 135
 
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements . fecha_chave
     (1) statements -> statements . statement
@@ -2521,7 +2474,7 @@ state 137
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    fecha_chave     shift and go to state 139
+    fecha_chave     shift and go to state 137
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2538,17 +2491,15 @@ state 137
 
     statement                      shift and go to state 16
 
-state 138
+state 136
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao . fecha_parentese abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao . fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
-    (46) comparacao -> comparacao . OPlog comparacao
 
-    fecha_parentese shift and go to state 140
-    OPlog           shift and go to state 87
+    fecha_parentese shift and go to state 138
 
 
-state 139
+state 137
 
     (55) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave .
 
@@ -2570,15 +2521,15 @@ state 139
     FIM             reduce using rule 55 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave .)
 
 
-state 140
+state 138
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese . abre_chave statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese . abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    abre_chave      shift and go to state 141
+    abre_chave      shift and go to state 139
 
 
-state 141
+state 139
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave . statements fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave . statements fecha_chave SENAO abre_chave statements fecha_chave
@@ -2643,10 +2594,10 @@ state 141
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 142
+    statements                     shift and go to state 140
     statement                      shift and go to state 2
 
-state 142
+state 140
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements . fecha_chave
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements . fecha_chave SENAO abre_chave statements fecha_chave
@@ -2696,7 +2647,7 @@ state 142
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    fecha_chave     shift and go to state 143
+    fecha_chave     shift and go to state 141
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2713,7 +2664,7 @@ state 142
 
     statement                      shift and go to state 16
 
-state 143
+state 141
 
     (56) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave . SENAO abre_chave statements fecha_chave
@@ -2734,17 +2685,17 @@ state 143
     $end            reduce using rule 56 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
     fecha_chave     reduce using rule 56 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
     FIM             reduce using rule 56 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave .)
-    SENAO           shift and go to state 144
+    SENAO           shift and go to state 142
 
 
-state 144
+state 142
 
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO . abre_chave statements fecha_chave
 
-    abre_chave      shift and go to state 145
+    abre_chave      shift and go to state 143
 
 
-state 145
+state 143
 
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave . statements fecha_chave
     (1) statements -> . statements statement
@@ -2808,10 +2759,10 @@ state 145
     RETORNA         shift and go to state 14
     SE              shift and go to state 15
 
-    statements                     shift and go to state 146
+    statements                     shift and go to state 144
     statement                      shift and go to state 2
 
-state 146
+state 144
 
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements . fecha_chave
     (1) statements -> statements . statement
@@ -2860,7 +2811,7 @@ state 146
     (56) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
     (57) statement -> . SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
 
-    fecha_chave     shift and go to state 147
+    fecha_chave     shift and go to state 145
     IFSULDEMINAS    shift and go to state 3
     comentario_uma_linha shift and go to state 4
     INTEIRO         shift and go to state 5
@@ -2877,7 +2828,7 @@ state 146
 
     statement                      shift and go to state 16
 
-state 147
+state 145
 
     (57) statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave .
 
@@ -2898,7 +2849,3 @@ state 147
     fecha_chave     reduce using rule 57 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave .)
     FIM             reduce using rule 57 (statement -> SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for OPlog in state 106 resolved as shift

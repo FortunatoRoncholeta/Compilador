@@ -104,7 +104,7 @@ def p_statement_comparacao(p):
 
 def p_statement_comparacao_aninhada(p):
     '''
-    comparacao : comparacao OPlog comparacao
+    comparacao_aninhada : comparacao OPlog comparacao
     '''
 
 def p_statement_declara_funcao(p): 

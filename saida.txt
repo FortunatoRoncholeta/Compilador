@@ -6,43 +6,16 @@ Linha: 3 - Token<COMPILADORES,COMPILADORES>Aviso: Palavra reservada.
 Linha: 3 - Token<ponto_virgula,;>
 Linha: 4 - Token<SE,SE>Aviso: Palavra reservada.
 Linha: 4 - Token<abre_parentese,(>
-Linha: 4 - Token<variavel,_op_usuario>
-Linha: 4 - Token<OPatr_simples,=>
-Linha: 4 - Token<OPatr_simples,=>
-Linha: 4 - Token<variavel,_op_soma>
+Linha: 4 - Token<inteiro,1>
 Linha: 4 - Token<fecha_parentese,)>
 Linha: 4 - Token<abre_chave,{>
-Linha: 5 - Token<ENQUANTO,ENQUANTO>Aviso: Palavra reservada.
+Linha: 5 - Token<IMPRIMIR,IMPRIMIR>Aviso: Palavra reservada.
 Linha: 5 - Token<abre_parentese,(>
-Linha: 5 - Token<variavel,_valor_n>
-Linha: 5 - Token<OPcomp,<=>
-Linha: 5 - Token<inteiro,10>
+Linha: 5 - Token<texto,"TESTE">
 Linha: 5 - Token<fecha_parentese,)>
-Linha: 5 - Token<abre_chave,{>
-Linha: 6 - Token<SE,SE>Aviso: Palavra reservada.
-Linha: 6 - Token<abre_parentese,(>
-Linha: 6 - Token<variavel,_valor_n>
-Linha: 6 - Token<OPmath,%>
-Linha: 6 - Token<inteiro,2>
-Linha: 6 - Token<OPatr_simples,=>
-Linha: 6 - Token<OPatr_simples,=>
-Linha: 6 - Token<inteiro,0>
-Linha: 6 - Token<fecha_parentese,)>
-Linha: 6 - Token<abre_chave,{>
-Linha: 7 - Token<variavel,_soma_pares>
-Linha: 7 - Token<OPmath,+>
-Linha: 7 - Token<OPatr_simples,=>
-Linha: 7 - Token<variavel,_valor_n>
+Linha: 5 - Token<ponto_virgula,;>
+Linha: 6 - Token<fecha_chave,}>
+Linha: 7 - Token<FIM,FIM>Aviso: Palavra reservada.
 Linha: 7 - Token<ponto_virgula,;>
-Linha: 8 - Token<variavel,_qtd_par>
-Linha: 8 - Token<OPmath,+>
-Linha: 8 - Token<OPatr_simples,=>
-Linha: 8 - Token<inteiro,1>
-Linha: 8 - Token<ponto_virgula,;>
-Linha: 9 - Token<fecha_chave,}>
-Linha: 10 - Token<fecha_chave,}>
-Linha: 11 - Token<fecha_chave,}>
-Linha: 12 - Token<FIM,FIM>Aviso: Palavra reservada.
-Linha: 12 - Token<ponto_virgula,;>
-Erro Sintático. Gramática não reconhecida proximo ao token <=>
-Erro Sintático. Gramática não reconhecida proximo ao token <%>
+Erro Sintático. Gramática não reconhecida proximo ao token <)>
+Erro Sintático. Gramática não reconhecida proximo ao token <}>
