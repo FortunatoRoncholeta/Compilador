@@ -1,4 +1,12 @@
 IFSULDEMINAS;
 INICIO;
 COMPILADORES; 
+SE(_op_usuario == _op_soma){
+      ENQUANTO(_valor_n<=10){
+          SE(_valor_n % 2 == 0){
+		_soma_pares+=_valor_n;
+           _qtd_par+=1;
+        }
+      }
+}
 FIM;

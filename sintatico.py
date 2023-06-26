@@ -26,7 +26,7 @@ def p_statements_single(p):
     statements : statement
     '''
 
-# IFSULDEMINAS, INICIO, COMPILADORES, FIM
+# IFSULDEMINAS, INICIO, COMPILADORES statments FIM
 def p_statement_codigo(p):
     '''
     statement : IFSULDEMINAS ponto_virgula INICIO ponto_virgula COMPILADORES ponto_virgula statements FIM ponto_virgula
@@ -130,18 +130,24 @@ def p_statement_RETORNA(p):
               | RETORNA texto ponto_virgula
     '''   
 
-def p_statement_SE(p): 
+def p_statement_condicional(p): 
     '''
     statement : SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
               | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
               | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
               | SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO_SE abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave SENAO abre_chave statements fecha_chave
+    
     '''  
 
-def p_statement_ENQUANTO(p): 
-    '''
-    statement : ENQUANTO abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave
-    '''
+# def p_statement_lacos(p): 
+#     '''
+#     statement :ENQUANTO abre_parentese comparacao fecha_parentese abre_chave statements fecha_chave 
+#               | PARA variavel EM INTERVALO abre_parentese inteiro virgula inteiro fecha_parentese abre_chave statements fecha_chave 
+#               | PARA inteiro EM INTERVALO abre_parentese  inteiro virgula variavel fecha_parentese abre_chave statements fecha_chave 
+#               | PARA inteiro EM INTERVALO abre_parentese  variavel virgula inteiro fecha_parentese abre_chave statements fecha_chave 
+#               | PARA variavel EM INTERVALO abre_parentese variavel virgula variavel fecha_parentese abre_chave statements fecha_chave 
+#               | PARA inteiro EM INTERVALO abre_parentese  variavel virgula variavel fecha_parentese abre_chave statements fecha_chave  
+#     '''
 
 errossintaticos = []
 def p_error(p):

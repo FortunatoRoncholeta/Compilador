@@ -20,6 +20,8 @@ reserved = {
     'SENAO': 'SENAO',
     'SENAO_SE': 'SENAO_SE',
     'PARA': 'PARA',
+    'EM': 'EM',
+    'INTERVALO':"INTERVALO",
     'ENQUANTO': 'ENQUANTO',
     'FACA': 'FACA',
     'FUNCAO': 'FUNCAO',
@@ -33,8 +35,6 @@ reserved = {
 
 tokens = [
     'OPmath',  # +
-
-
     'dois_pontos',
     'ponto_virgula',
     'virgula',
@@ -43,40 +43,27 @@ tokens = [
     # 'aspas_simples',
     'comentario_uma_linha',
     # 'comentario_n_linha',
-
-
     'negacao',
     'OPatr',
     'OPatr_simples',
-
-
     'OPcomp',
-
     'OPlog',
-
-
-
     'abre_parentese',
     'fecha_parentese',
     'abre_colchete',
     'fecha_colchete',
     'abre_chave',
     'fecha_chave',
-
     'inteiro',
     'flutuante',
     'texto',
     'variavel',
-
     'ignore',
-
     'variavel_errada',
     'numero_errado',
     'texto_errado',
     'caracter_invisivel',
     'nova_linha'
-
-
 
 ] + list(reserved.values())
 
@@ -91,6 +78,8 @@ t_SE = r'SE'
 t_SENAO = r'SENAO'
 t_SENAO_SE = r'SENAO_SE'
 t_PARA = r'PARA'
+t_EM = r'EM'
+t_INTERVALO = r'INTERVALO'
 t_ENQUANTO = r'ENQUANTO'
 t_FACA = r'FACA'
 t_FUNCAO = r'FUNCAO'
